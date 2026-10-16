@@ -5,13 +5,26 @@
 
   // Menú móvil
   var btn = document.querySelector('.menu-btn');
-  var list = document.querySelector('.nav ul');
+  var list = document.getElementById('menu');
   if (btn && list) {
     btn.addEventListener('click', function () {
       var open = list.classList.toggle('open');
       btn.setAttribute('aria-expanded', open);
     });
   }
+
+  // Submenús (táctil / teclado)
+  document.querySelectorAll('.sub-toggle').forEach(function (t) {
+    t.addEventListener('click', function (e) {
+      e.stopPropagation();
+      var li = t.parentNode, open = !li.classList.contains('open');
+      document.querySelectorAll('.has-sub.open').forEach(function (x) { x.classList.remove('open'); x.querySelector('.sub-toggle').setAttribute('aria-expanded', 'false'); });
+      li.classList.toggle('open', open); t.setAttribute('aria-expanded', open);
+    });
+  });
+  document.addEventListener('click', function (e) {
+    if (!e.target.closest('.has-sub')) document.querySelectorAll('.has-sub.open').forEach(function (x) { x.classList.remove('open'); });
+  });
 
   // Barra de progreso + sombra del header
   var bar = document.createElement('div');
@@ -42,7 +55,8 @@
     if (u) { a.href = u; a.target = '_blank'; a.rel = 'noopener'; }
     else {
       a.classList.add('is-off'); a.removeAttribute('href'); a.setAttribute('aria-disabled', 'true');
-      if (!a.querySelector('.soon')) a.insertAdjacentHTML('beforeend', ' <span class="soon" style="font-size:.7em;opacity:.8">(próximamente)</span>');
+      if (a.hasAttribute('data-epi-quiet')) a.setAttribute('title', 'Próximamente');
+      else if (!a.querySelector('.soon')) a.insertAdjacentHTML('beforeend', ' <span class="soon" style="font-size:.7em;opacity:.8">(próximamente)</span>');
     }
   });
 
@@ -53,7 +67,7 @@
   wa.href = num ? 'https://wa.me/' + num + '?text=' + encodeURIComponent('Hola EPI-LAB, quisiera más información.') : ROOT + 'contacto.html';
   if (num) { wa.target = '_blank'; wa.rel = 'noopener'; }
   wa.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z"/></svg><span>' + (num ? 'WhatsApp' : 'Escríbenos') + '</span>';
-  if (!num) wa.style.background = 'var(--blue-600)';
+  if (!num) wa.style.background = 'var(--teal-600)';
   document.body.appendChild(wa);
 
   // Pasos interactivos "From Question to Decision"

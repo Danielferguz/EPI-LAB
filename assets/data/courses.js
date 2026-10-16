@@ -1,4 +1,4 @@
-/* Catálogo de cursos. Edita date (ej. "17 Oct 2026"), duration (ej. "5 semanas") y status: "abierto" | "proximo" | "agotado". */
+/* Catálogo de cursos. Edita date (ISO, ej. "2026-11-14"), duration (ej. "5 semanas") y status: "abierto" | "proximo" | "agotado". */
 window.EPI_COURSES = [
  {
   "id": "c1",
@@ -82,6 +82,46 @@ window.EPI_COURSES = [
  },
  {
   "id": "c9",
+  "route": "epi-clinical",
+  "title": "Pruebas diagnósticas",
+  "level": "Intermedio",
+  "desc": "Sensibilidad, especificidad, razones de verosimilitud y reporte según STARD.",
+  "date": "",
+  "duration": "",
+  "status": "proximo"
+ },
+ {
+  "id": "c10",
+  "route": "epi-clinical",
+  "title": "Estudios de pronóstico y predicción",
+  "level": "Avanzado",
+  "desc": "Factores pronósticos, modelos de predicción, validación y reporte según TRIPOD.",
+  "date": "",
+  "duration": "",
+  "status": "proximo"
+ },
+ {
+  "id": "c11",
+  "route": "epi-clinical",
+  "title": "Evidencia del mundo real",
+  "level": "Avanzado",
+  "desc": "Registros, historias clínicas y bases administrativas como fuente de evidencia.",
+  "date": "",
+  "duration": "",
+  "status": "proximo"
+ },
+ {
+  "id": "c12",
+  "route": "epi-clinical",
+  "title": "Validación y adaptación de instrumentos",
+  "level": "Avanzado",
+  "desc": "Confiabilidad, validez y adaptación transcultural de instrumentos de medición en salud.",
+  "date": "",
+  "duration": "",
+  "status": "proximo"
+ },
+ {
+  "id": "c13",
   "route": "epi-data",
   "title": "Estadística para investigadores clínicos",
   "level": "Básico",
@@ -91,7 +131,7 @@ window.EPI_COURSES = [
   "status": "proximo"
  },
  {
-  "id": "c10",
+  "id": "c14",
   "route": "epi-data",
   "title": "R desde cero",
   "level": "Básico",
@@ -101,7 +141,7 @@ window.EPI_COURSES = [
   "status": "proximo"
  },
  {
-  "id": "c11",
+  "id": "c15",
   "route": "epi-data",
   "title": "Stata para investigación clínica",
   "level": "Básico",
@@ -111,7 +151,7 @@ window.EPI_COURSES = [
   "status": "proximo"
  },
  {
-  "id": "c12",
+  "id": "c16",
   "route": "epi-data",
   "title": "Regresión lineal",
   "level": "Intermedio",
@@ -121,7 +161,7 @@ window.EPI_COURSES = [
   "status": "proximo"
  },
  {
-  "id": "c13",
+  "id": "c17",
   "route": "epi-data",
   "title": "Regresión logística",
   "level": "Intermedio",
@@ -131,7 +171,7 @@ window.EPI_COURSES = [
   "status": "proximo"
  },
  {
-  "id": "c14",
+  "id": "c18",
   "route": "epi-data",
   "title": "Poisson con varianza robusta",
   "level": "Intermedio",
@@ -141,7 +181,7 @@ window.EPI_COURSES = [
   "status": "proximo"
  },
  {
-  "id": "c15",
+  "id": "c19",
   "route": "epi-data",
   "title": "Supervivencia",
   "level": "Intermedio",
@@ -151,7 +191,7 @@ window.EPI_COURSES = [
   "status": "proximo"
  },
  {
-  "id": "c16",
+  "id": "c20",
   "route": "epi-data",
   "title": "Análisis longitudinal",
   "level": "Avanzado",
@@ -161,7 +201,7 @@ window.EPI_COURSES = [
   "status": "proximo"
  },
  {
-  "id": "c17",
+  "id": "c21",
   "route": "epi-data",
   "title": "Missing data",
   "level": "Avanzado",
@@ -171,7 +211,7 @@ window.EPI_COURSES = [
   "status": "proximo"
  },
  {
-  "id": "c18",
+  "id": "c22",
   "route": "epi-data",
   "title": "Modelización multivariable",
   "level": "Avanzado",
@@ -181,7 +221,7 @@ window.EPI_COURSES = [
   "status": "proximo"
  },
  {
-  "id": "c19",
+  "id": "c23",
   "route": "epi-causal",
   "title": "DAGs",
   "level": "Intermedio",
@@ -191,7 +231,7 @@ window.EPI_COURSES = [
   "status": "proximo"
  },
  {
-  "id": "c20",
+  "id": "c24",
   "route": "epi-causal",
   "title": "Confusión",
   "level": "Intermedio",
@@ -201,7 +241,7 @@ window.EPI_COURSES = [
   "status": "proximo"
  },
  {
-  "id": "c21",
+  "id": "c25",
   "route": "epi-causal",
   "title": "Mediación",
   "level": "Avanzado",
@@ -211,7 +251,7 @@ window.EPI_COURSES = [
   "status": "proximo"
  },
  {
-  "id": "c22",
+  "id": "c26",
   "route": "epi-causal",
   "title": "Collider bias",
   "level": "Intermedio",
@@ -221,7 +261,7 @@ window.EPI_COURSES = [
   "status": "proximo"
  },
  {
-  "id": "c23",
+  "id": "c27",
   "route": "epi-causal",
   "title": "Propensity score",
   "level": "Avanzado",
@@ -231,7 +271,7 @@ window.EPI_COURSES = [
   "status": "proximo"
  },
  {
-  "id": "c24",
+  "id": "c28",
   "route": "epi-causal",
   "title": "Inverse probability weighting",
   "level": "Avanzado",
@@ -241,7 +281,7 @@ window.EPI_COURSES = [
   "status": "proximo"
  },
  {
-  "id": "c25",
+  "id": "c29",
   "route": "epi-causal",
   "title": "Target trial emulation",
   "level": "Avanzado",
@@ -251,7 +291,7 @@ window.EPI_COURSES = [
   "status": "proximo"
  },
  {
-  "id": "c26",
+  "id": "c30",
   "route": "epi-causal",
   "title": "Causal inference with R",
   "level": "Avanzado",
@@ -261,7 +301,7 @@ window.EPI_COURSES = [
   "status": "proximo"
  },
  {
-  "id": "c27",
+  "id": "c31",
   "route": "epi-causal",
   "title": "G-methods",
   "level": "Avanzado",
@@ -271,7 +311,7 @@ window.EPI_COURSES = [
   "status": "proximo"
  },
  {
-  "id": "c28",
+  "id": "c32",
   "route": "epi-evidence",
   "title": "Lectura crítica",
   "level": "Básico",
@@ -281,7 +321,7 @@ window.EPI_COURSES = [
   "status": "proximo"
  },
  {
-  "id": "c29",
+  "id": "c33",
   "route": "epi-evidence",
   "title": "Revisiones sistemáticas",
   "level": "Intermedio",
@@ -291,7 +331,7 @@ window.EPI_COURSES = [
   "status": "proximo"
  },
  {
-  "id": "c30",
+  "id": "c34",
   "route": "epi-evidence",
   "title": "Meta-análisis",
   "level": "Intermedio",
@@ -301,7 +341,7 @@ window.EPI_COURSES = [
   "status": "proximo"
  },
  {
-  "id": "c31",
+  "id": "c35",
   "route": "epi-evidence",
   "title": "Meta-análisis diagnóstico",
   "level": "Avanzado",
@@ -311,7 +351,7 @@ window.EPI_COURSES = [
   "status": "proximo"
  },
  {
-  "id": "c32",
+  "id": "c36",
   "route": "epi-evidence",
   "title": "Network meta-analysis",
   "level": "Avanzado",
@@ -321,7 +361,7 @@ window.EPI_COURSES = [
   "status": "proximo"
  },
  {
-  "id": "c33",
+  "id": "c37",
   "route": "epi-evidence",
   "title": "Risk of Bias: RoB 2",
   "level": "Intermedio",
@@ -331,7 +371,7 @@ window.EPI_COURSES = [
   "status": "proximo"
  },
  {
-  "id": "c34",
+  "id": "c38",
   "route": "epi-evidence",
   "title": "Risk of Bias: ROBINS-I",
   "level": "Intermedio",
@@ -341,7 +381,7 @@ window.EPI_COURSES = [
   "status": "proximo"
  },
  {
-  "id": "c35",
+  "id": "c39",
   "route": "epi-evidence",
   "title": "GRADE",
   "level": "Intermedio",
@@ -351,7 +391,7 @@ window.EPI_COURSES = [
   "status": "proximo"
  },
  {
-  "id": "c36",
+  "id": "c40",
   "route": "epi-evidence",
   "title": "Elaboración de recomendaciones",
   "level": "Avanzado",
@@ -361,11 +401,61 @@ window.EPI_COURSES = [
   "status": "proximo"
  },
  {
-  "id": "c37",
+  "id": "c41",
   "route": "epi-evidence",
   "title": "Guías de práctica clínica",
   "level": "Avanzado",
   "desc": "Metodología para desarrollar y adaptar guías de práctica clínica.",
+  "date": "",
+  "duration": "",
+  "status": "proximo"
+ },
+ {
+  "id": "c42",
+  "route": "epi-research",
+  "title": "Redacción de protocolos de investigación",
+  "level": "Básico",
+  "desc": "Pregunta, objetivos, métodos y plan de análisis en un protocolo claro y defendible.",
+  "date": "",
+  "duration": "",
+  "status": "proximo"
+ },
+ {
+  "id": "c43",
+  "route": "epi-research",
+  "title": "Reportes de casos clínicos",
+  "level": "Básico",
+  "desc": "Cómo redactar y publicar un reporte de caso siguiendo la guía CARE.",
+  "date": "",
+  "duration": "",
+  "status": "proximo"
+ },
+ {
+  "id": "c44",
+  "route": "epi-research",
+  "title": "Redacción de artículos científicos",
+  "level": "Intermedio",
+  "desc": "Estructura IMRaD, guías de reporte EQUATOR y selección de revista.",
+  "date": "",
+  "duration": "",
+  "status": "proximo"
+ },
+ {
+  "id": "c45",
+  "route": "epi-research",
+  "title": "Búsqueda bibliográfica y gestores de referencias",
+  "level": "Básico",
+  "desc": "Estrategias de búsqueda en bases de datos y manejo de referencias con Zotero.",
+  "date": "",
+  "duration": "",
+  "status": "proximo"
+ },
+ {
+  "id": "c46",
+  "route": "epi-research",
+  "title": "Ética y ciencia abierta",
+  "level": "Intermedio",
+  "desc": "Ética de la investigación, registro de protocolos y datos abiertos.",
   "date": "",
   "duration": "",
   "status": "proximo"

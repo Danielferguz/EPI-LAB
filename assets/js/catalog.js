@@ -2,20 +2,44 @@
   var root = document.getElementById('catalog');
   var data = window.EPI_COURSES;
   if (!root || !data) return;
+  var ICONS = window.EPI_ICONS || {};
   var R = {
-    'epi-methods': { n: 'EPI-METHODS', c1: '#134E9C', c2: '#0A2540' },
-    'epi-data': { n: 'EPI-DATA', c1: '#3B82D6', c2: '#134E9C' },
-    'epi-causal': { n: 'EPI-CAUSAL', c1: '#0F3A6D', c2: '#071A33' },
-    'epi-evidence': { n: 'EPI-EVIDENCE', c1: '#1D63C9', c2: '#0F3A6D' }
+    'epi-methods': { n: 'EPI-METHODS', c1: '#2F7F92', c2: '#1F5F6F' },
+    'epi-data': { n: 'EPI-DATA', c1: '#4A98AA', c2: '#2F7F92' },
+    'epi-causal': { n: 'EPI-CAUSAL', c1: '#8B2E3B', c2: '#5E1F29' },
+    'epi-evidence': { n: 'EPI-EVIDENCE', c1: '#3A8294', c2: '#2E3338' },
+    'epi-clinical': { n: 'EPI-CLINICAL', c1: '#5C6368', c2: '#2E3338' },
+    'epi-research': { n: 'EPI-RESEARCH', c1: '#A5495A', c2: '#8B2E3B' }
   };
+  var CATS = [
+    { name: 'Fundamentos de la investigación clínica', sub: 'Diseño, metodología y epidemiología clínica', routes: ['epi-methods', 'epi-clinical'] },
+    { name: 'Análisis de datos e inferencia causal', sub: 'Estadística, modelos y causalidad', routes: ['epi-data', 'epi-causal'] },
+    { name: 'Evidencia y publicación científica', sub: 'Síntesis de evidencia, escritura y publicación', routes: ['epi-evidence', 'epi-research'] }
+  ];
   var STATUS = { abierto: 'Inscripción abierta', proximo: 'Próximamente', agotado: 'Cupos agotados' };
-  var st = { route: 'all', level: 'all', q: '', view: 'cards' };
+  var flat = root.getAttribute('data-flat') === '1';
+  var st = { route: 'all', level: 'all', q: '', view: root.getAttribute('data-view') || 'cards' };
   var grid = document.getElementById('cgrid'), count = document.getElementById('ccount');
   var dlg = document.getElementById('course-dialog');
   var E = window.EPI || {};
 
   function esc(s) { return String(s).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); }
   function norm(s) { return s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, ''); }
+  function fmt(d) {
+    if (!d) return '';
+    var m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(d);
+    if (!m) return d;
+    return new Date(+m[1], +m[2] - 1, +m[3]).toLocaleDateString('es', { day: 'numeric', month: 'short', year: 'numeric' });
+  }
+
+  function card(c) {
+    var r = R[c.route], when = fmt(c.date) || 'Fecha por anunciar';
+    return '<article class="ccard" style="--c1:' + r.c1 + ';--c2:' + r.c2 + '">' +
+      '<div class="cband"><span class="badge">' + STATUS[c.status] + '</span><span class="ic">' + (ICONS[c.route] || '') + '</span></div>' +
+      '<div class="cbody"><div class="cmeta"><span class="lvl">' + r.n + '</span></div><h3>' + esc(c.title) + '</h3>' +
+      '<div class="cmeta"><span>' + c.level + '</span><span>' + esc(when) + '</span>' + (c.duration ? '<span>' + esc(c.duration) + '</span>' : '') + '</div>' +
+      '<button class="btn btn-ghost" data-id="' + c.id + '">Más información</button></div></article>';
+  }
 
   function render() {
     var q = norm(st.q);
@@ -24,27 +48,27 @@
         (!q || norm(c.title + ' ' + c.desc).indexOf(q) > -1);
     });
     count.textContent = rows.length + (rows.length === 1 ? ' curso' : ' cursos');
-    grid.className = 'cgrid' + (st.view === 'list' ? ' list' : '');
-    if (!rows.length) { grid.innerHTML = '<div class="empty">No encontramos cursos con esos filtros.</div>'; return; }
-    grid.innerHTML = rows.map(function (c) {
-      var r = R[c.route];
-      var when = c.date || 'Fecha por anunciar';
-      return '<article class="ccard" style="--c1:' + r.c1 + ';--c2:' + r.c2 + '">' +
-        '<div class="cband"><span>' + r.n + '</span><span class="badge">' + STATUS[c.status] + '</span></div>' +
-        '<div class="cbody"><h3>' + esc(c.title) + '</h3>' +
-        '<div class="cmeta"><span class="lvl">' + c.level + '</span><span>' + esc(when) + '</span>' + (c.duration ? '<span>' + esc(c.duration) + '</span>' : '') + '</div>' +
-        '<button class="btn btn-ghost" data-id="' + c.id + '">Más información</button></div></article>';
+    if (!rows.length) { grid.className = ''; grid.innerHTML = '<div class="empty">No encontramos cursos con esos filtros.</div>'; return; }
+    var cls = 'cgrid' + (st.view === 'list' ? ' list' : '');
+    if (flat) {
+      rows = rows.slice().sort(function (a, b) { return (a.date || '9999') < (b.date || '9999') ? -1 : 1; });
+      grid.className = ''; grid.innerHTML = '<div class="' + cls + '">' + rows.map(card).join('') + '</div>'; return;
+    }
+    grid.className = '';
+    grid.innerHTML = CATS.map(function (cat) {
+      var items = rows.filter(function (c) { return cat.routes.indexOf(c.route) > -1; });
+      if (!items.length) return '';
+      return '<section class="cat-block"><div class="cat-title"><h3>' + cat.name + '</h3><span>' + cat.sub + '</span></div><div class="' + cls + '">' + items.map(card).join('') + '</div></section>';
     }).join('');
   }
 
   function openCourse(id) {
     var c = data.filter(function (x) { return x.id === id; })[0]; if (!c) return;
-    var r = R[c.route];
-    var wa = (E.whatsapp || '').replace(/\D/g, '');
+    var r = R[c.route], wa = (E.whatsapp || '').replace(/\D/g, '');
     var contact = 'contacto.html?tema=' + encodeURIComponent(r.n);
-    dlg.innerHTML = '<div style="position:relative"><div class="dlg-head" style="--c1:' + r.c1 + ';--c2:' + r.c2 + '"><span class="badge">' + r.n + ' · ' + STATUS[c.status] + '</span><h3>' + esc(c.title) + '</h3>' +
-      '<button class="dlg-x" aria-label="Cerrar" data-close>×</button></div>' +
-      '<div class="dlg-body"><p>' + esc(c.desc) + '</p><dl><dt>Nivel</dt><dd>' + c.level + '</dd><dt>Inicio</dt><dd>' + esc(c.date || 'Por anunciar') + '</dd><dt>Duración</dt><dd>' + esc(c.duration || 'Por definir') + '</dd><dt>Ruta</dt><dd>' + r.n + '</dd></dl>' +
+    dlg.innerHTML = '<div><div class="dlg-head" style="--c1:' + r.c1 + ';--c2:' + r.c2 + '"><span class="badge">' + r.n + ' · ' + STATUS[c.status] + '</span><h3>' + esc(c.title) + '</h3>' +
+      '<span class="dlg-ic">' + (ICONS[c.route] || '') + '</span><button class="dlg-x" aria-label="Cerrar" data-close>×</button></div>' +
+      '<div class="dlg-body"><p>' + esc(c.desc) + '</p><dl><dt>Nivel</dt><dd>' + c.level + '</dd><dt>Inicio</dt><dd>' + esc(fmt(c.date) || 'Por anunciar') + '</dd><dt>Duración</dt><dd>' + esc(c.duration || 'Por definir') + '</dd><dt>Área</dt><dd>' + r.n + '</dd></dl>' +
       '<div class="btn-row" style="margin:0"><a class="btn btn-primary" href="' + contact + '">Solicitar información</a>' +
       (wa ? '<a class="btn btn-ghost" target="_blank" rel="noopener" href="https://wa.me/' + wa + '?text=' + encodeURIComponent('Hola EPI-LAB, me interesa: ' + c.title) + '">WhatsApp</a>' : '') + '</div></div></div>';
     dlg.showModal();
