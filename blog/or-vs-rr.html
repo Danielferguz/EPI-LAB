@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>¿Por qué un OR no es un RR? · EPI-LAB Insights</title>
+<meta name="description" content="El odds ratio exagera el riesgo relativo cuando el desenlace es común. Ejemplos, regla práctica y código en R y Stata.">
+<meta name="theme-color" content="#0A2540">
+<meta property="og:title" content="¿Por qué un OR no es un RR? · EPI-LAB Insights">
+<meta property="og:description" content="El odds ratio exagera el riesgo relativo cuando el desenlace es común. Ejemplos, regla práctica y código en R y Stata.">
+<meta property="og:type" content="website">
+<script>document.documentElement.className+=" js"</script>
+<link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,500;8..60,600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Saltar al contenido</a>
+<header class="site-header">
+  <div class="wrap nav">
+    <a class="logo" href="../index.html" aria-label="EPI-LAB, inicio"><span>EPI</span><i class="dash"></i><span>LAB</span></a>
+    <button class="menu-btn" aria-label="Menú" aria-expanded="false"><span></span><span></span><span></span></button>
+    <ul><li><a href="../nosotros.html">Nosotros</a></li><li><a href="../cursos.html">Cursos</a></li><li><a href="../programas.html">Programas</a></li><li><a href="../investigacion.html">Investigación</a></li><li><a href="../recursos.html">Recursos</a></li><li><a href="../blog.html" aria-current="page">Blog</a></li><li><a href="../contacto.html">Contacto</a></li><li><a class="btn btn-cta" href="../cursos.html">Aprende con EPI-LAB</a></li></ul>
+  </div>
+</header>
+<main id="main">
+
+<section class="page-hero"><div class="wrap article" style="max-width:720px"><div class="eyebrow">Estadística · Medidas de asociación</div><h1 style="font-size:clamp(2rem,4.5vw,3rem)">¿Por qué un OR no es un RR?</h1><p class="lead">El odds ratio se parece al riesgo relativo solo cuando el desenlace es raro. Cuando no lo es, exagera.</p></div></section>
+<section class="section"><div class="wrap"><article class="article">
+<p>En regresión logística, los coeficientes se exponencian y se obtiene un <b>odds ratio (OR)</b>. Es tentador leerlo como “riesgo relativo”: “2.7 veces más riesgo”. Pero odds y riesgo no son lo mismo.</p>
+<h2>Riesgo vs. odds</h2>
+<p>El <b>riesgo</b> es la probabilidad <code>p</code>. Los <b>odds</b> son <code>p / (1 − p)</code>. Cuando <code>p</code> es pequeño, <code>1 − p ≈ 1</code> y odds ≈ riesgo. Cuando <code>p</code> crece, los odds se alejan.</p>
+<table class="t"><thead><tr><th>Riesgo expuestos</th><th>Riesgo no expuestos</th><th>RR</th><th>OR</th></tr></thead><tbody>
+<tr><td>5 %</td><td>2.5 %</td><td>2.00</td><td>2.05</td></tr>
+<tr><td>10 %</td><td>5 %</td><td>2.00</td><td>2.11</td></tr>
+<tr><td>40 %</td><td>20 %</td><td>2.00</td><td>2.67</td></tr>
+<tr><td>60 %</td><td>30 %</td><td>2.00</td><td>3.50</td></tr></tbody></table>
+<p>En todas las filas el riesgo se duplica (RR = 2), pero el OR crece conforme el desenlace se vuelve común.</p>
+<div class="callout"><p><b>Regla práctica:</b> si el desenlace ocurre en más de ~10 % de los participantes, no interpretes el OR como un RR.</p></div>
+<h2>¿Qué hacer?</h2>
+<ul>
+<li><b>Estudios de cohorte, ensayos y transversales:</b> estima directamente RR o razón de prevalencias (RP) con un modelo de Poisson con varianza robusta o log-binomial, o por estandarización marginal a partir de un modelo logístico.</li>
+<li><b>Estudios de casos y controles:</b> el OR es la medida estimable; con desenlace raro aproxima al RR.</li>
+<li><b>Si usas OR:</b> repórtalo como odds ratio y acompáñalo del riesgo absoluto.</li>
+</ul>
+<h2>Poisson con varianza robusta</h2>
+<pre><code># R
+m &lt;- glm(evento ~ exposicion + edad + sexo, family = poisson(link = "log"), data = d)
+lmtest::coeftest(m, vcov = sandwich::vcovHC(m, type = "HC0"))
+exp(coef(m))   # razón de riesgos / prevalencias
+
+* Stata
+glm evento i.exposicion edad i.sexo, family(poisson) link(log) vce(robust) eform</code></pre>
+<p>Recuerda siempre reportar intervalos de confianza y el riesgo absoluto de base: la medida relativa sola no dice cuánto cambia el riesgo en términos clínicos.</p>
+</article>
+<div style="text-align:center;margin-top:48px"><a class="btn btn-ghost" href="../blog.html">← Todos los artículos</a></div></div></section>
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="foot">
+      <div>
+        <a class="logo" href="../index.html"><span>EPI</span><i class="dash"></i><span>LAB</span></a>
+        <p style="margin-top:14px;max-width:34ch">Epidemiology · Evidence · Data.<br>Formación, investigación y metodología para profesionales de la salud.</p>
+      </div>
+      <div><h5>Academy</h5><ul><li><a href="../cursos.html#epi-methods">EPI-METHODS</a></li><li><a href="../cursos.html#epi-data">EPI-DATA</a></li><li><a href="../cursos.html#epi-causal">EPI-CAUSAL</a></li><li><a href="../cursos.html#epi-evidence">EPI-EVIDENCE</a></li><li><a href="../programas.html">EPI-LAB Researcher</a></li></ul></div>
+      <div><h5>Research &amp; Resources</h5><ul><li><a href="../investigacion.html">Investigación</a></li><li><a href="../recursos.html#tools">Tools</a></li><li><a href="../recursos.html#cheatsheets">Cheatsheets</a></li><li><a href="../blog.html">Insights</a></li></ul></div>
+      <div><h5>About</h5><ul><li><a href="../nosotros.html">Nosotros</a></li><li><a href="../nosotros.html#faculty">Faculty</a></li><li><a href="../contacto.html">Contacto</a></li></ul></div>
+    </div>
+    <div class="legal"><span>© <span id="y">2026</span> EPI-LAB. Todos los derechos reservados.</span><span>Contenido con fines educativos; no sustituye el juicio clínico.</span></div>
+  </div>
+</footer>
+<script src="../assets/js/main.js" defer></script>
+</body>
+</html>
