@@ -26,13 +26,25 @@
   </div>
 </header>
 <main id="main">
-<section class="page-hero"><div class="wrap"><div class="eyebrow">Academy</div><h1>Cuatro rutas para formarte como investigador clínico.</h1><p class="lead">Metodología, datos, causalidad y evidencia. Empieza por la ruta que resuelve tu problema actual, o sigue el programa completo.</p></div></section>
-<section class="section"><div class="wrap"><article class="route  rv" id="epi-methods"><div class="route-head"><div><div class="code" style="font:600 .8rem var(--mono);letter-spacing:.1em;color:var(--blue-600)">RUTA</div><h2>EPI-METHODS</h2><p>Diseña mejor tu investigación</p></div><a class="btn btn-ghost" href="contacto.html?tema=EPI-METHODS">Pedir información</a></div>
-<ul class="chips"><li>Fundamentos de epidemiología clínica</li><li>Diseño de estudios</li><li>Estudios transversales</li><li>Cohortes y casos-controles</li><li>Ensayos clínicos</li><li>Tamaño muestral y potencia</li><li>Sesgos y confusión</li><li>Validez interna y externa</li></ul></article><article class="route r2 rv" id="epi-data"><div class="route-head"><div><div class="code" style="font:600 .8rem var(--mono);letter-spacing:.1em;color:var(--blue-600)">RUTA</div><h2>EPI-DATA</h2><p>Convierte datos en resultados</p></div><a class="btn btn-ghost" href="contacto.html?tema=EPI-DATA">Pedir información</a></div>
-<ul class="chips"><li>Estadística para investigadores clínicos</li><li>R desde cero</li><li>Stata para investigación clínica</li><li>Regresión lineal</li><li>Regresión logística</li><li>Poisson con varianza robusta</li><li>Supervivencia</li><li>Análisis longitudinal</li><li>Missing data</li><li>Modelización multivariable</li></ul></article><article class="route r3 rv" id="epi-causal"><div class="route-head"><div><div class="code" style="font:600 .8rem var(--mono);letter-spacing:.1em;color:var(--blue-600)">RUTA</div><h2>EPI-CAUSAL</h2><p>Aprende a responder preguntas causales</p></div><a class="btn btn-ghost" href="contacto.html?tema=EPI-CAUSAL">Pedir información</a></div>
-<ul class="chips"><li>DAGs</li><li>Confusión</li><li>Mediación</li><li>Collider bias</li><li>Propensity score</li><li>Inverse probability weighting</li><li>Target trial emulation</li><li>Causal inference with R</li><li>G-methods</li></ul></article><article class="route r4 rv" id="epi-evidence"><div class="route-head"><div><div class="code" style="font:600 .8rem var(--mono);letter-spacing:.1em;color:var(--blue-600)">RUTA</div><h2>EPI-EVIDENCE</h2><p>De estudios aislados a decisiones clínicas</p></div><a class="btn btn-ghost" href="contacto.html?tema=EPI-EVIDENCE">Pedir información</a></div>
-<ul class="chips"><li>Lectura crítica</li><li>Revisiones sistemáticas</li><li>Meta-análisis</li><li>Meta-análisis diagnóstico</li><li>Network meta-analysis</li><li>Risk of Bias: RoB 2</li><li>Risk of Bias: ROBINS-I</li><li>GRADE</li><li>Elaboración de recomendaciones</li><li>Guías de práctica clínica</li></ul></article>
-<div class="callout"><p><b>¿Prefieres un camino guiado?</b> Las cuatro rutas se integran en <a href="programas.html">EPI-LAB Researcher</a>, un programa de 8–12 semanas con proyecto final.</p></div>
+<section class="page-hero"><div class="wrap"><div class="eyebrow">Academy</div><h1>Cuatro rutas para formarte como investigador clínico.</h1><p class="lead">Metodología, datos, causalidad y evidencia. Filtra por ruta, nivel o palabra clave y consulta cada curso.</p></div></section>
+<section class="section" style="padding-top:48px"><div class="wrap" id="catalog">
+<div class="tabs" role="group" aria-label="Rutas">
+<button class="tab on" data-route="all">Todas</button>
+<button class="tab" data-route="epi-methods">EPI-METHODS</button>
+<button class="tab" data-route="epi-data">EPI-DATA</button>
+<button class="tab" data-route="epi-causal">EPI-CAUSAL</button>
+<button class="tab" data-route="epi-evidence">EPI-EVIDENCE</button>
+</div>
+<div class="toolbar">
+<div class="grow"><input id="cq" type="search" placeholder="Buscar curso… (ej. GRADE, Stata, DAG)" aria-label="Buscar curso"></div>
+<select id="clevel" aria-label="Nivel" style="min-width:160px"><option value="all">Todos los niveles</option><option>Básico</option><option>Intermedio</option><option>Avanzado</option></select>
+<div class="viewtog"><button class="on" data-view="cards">Tarjetas</button><button data-view="list">Calendario</button></div>
+</div>
+<p class="count" id="ccount" aria-live="polite"></p>
+<div id="cgrid" class="cgrid"></div>
+<dialog id="course-dialog" aria-label="Detalle del curso"></dialog>
+<noscript><p>Activa JavaScript para ver el catálogo de cursos.</p></noscript>
+<div class="callout" style="margin-top:34px"><p><b>¿Prefieres un camino guiado?</b> Las cuatro rutas se integran en <a href="programas.html">EPI-LAB Researcher</a>, un programa de 8–12 semanas con proyecto final.</p></div>
 </div></section>
 <section class="section alt"><div class="wrap">
 <div class="section-head"><div class="eyebrow">EPI-LAB Cases</div><h2>Aprende haciendo</h2><p class="lead">Casos reales o simulados que recorren todo el proceso, de la pregunta a la recomendación.</p></div>
@@ -40,6 +52,7 @@
 <div class="card"><div class="code">CASE 01</div><h3>¿Los iSGLT2 reducen la progresión de la ERC?</h3><ul class="case-flow"><li>Pregunta</li><li>PICO</li><li>Búsqueda</li><li>Selección</li><li>Extracción</li><li>RoB</li><li>Metaanálisis</li><li>GRADE</li><li>Recomendación</li></ul></div>
 <div class="card"><div class="code">CASE 02</div><h3>¿La confianza en el sistema sanitario se asocia con el control de la HTA?</h3><ul class="case-flow"><li>Cohorte / transversal</li><li>DAG</li><li>Confusión</li><li>RP</li><li>Modelo</li><li>Interpretación</li></ul></div>
 </div></div></section>
+<section class="section"><div class="wrap"><div class="section-head" style="text-align:center;margin-inline:auto"><div class="eyebrow" style="justify-content:center">FAQ</div><h2>Preguntas frecuentes</h2></div><div class="faq"><details><summary>Soy nuev@, ¿por dónde empiezo?</summary><p>Si vas a diseñar un estudio, empieza por EPI-METHODS (epidemiología clínica y diseño). Si ya tienes datos, ve a EPI-DATA. Si tu objetivo es una revisión sistemática, empieza por EPI-EVIDENCE. Si dudas, escríbenos y te orientamos.</p></details><details><summary>¿Cuál es la metodología?</summary><p>Aprender haciendo: cada ruta se apoya en casos y en un proyecto aplicado, no solo en clases magistrales.</p></details><details><summary>¿Qué diferencia hay entre una ruta y el programa Researcher?</summary><p>Las rutas son módulos independientes. EPI-LAB Researcher las integra en un recorrido guiado de 8 a 12 semanas, de la pregunta clínica al manuscrito.</p></details><details><summary>¿Cómo me entero de las próximas ediciones?</summary><p>El calendario se actualiza en esta página. También puedes pedir información desde cualquier curso y te avisamos.</p></details><details><summary>¿Ofrecen formación para instituciones?</summary><p>Sí, podemos adaptar contenidos para equipos o instituciones. Cuéntanos tu caso en la página de contacto.</p></details></div></div></section>
 <section class="section"><div class="wrap"><div class="cta rv">
 <div><h2>De la pregunta clínica a la decisión.</h2><p>Cuéntanos en qué etapa está tu investigación y te orientamos.</p></div>
 <div class="btn-row" style="margin:0"><a class="btn btn-primary" href="cursos.html" style="background:#fff;color:var(--blue-900)">Ver cursos</a><a class="btn btn-ghost" href="contacto.html" style="color:#fff;border-color:rgba(255,255,255,.4);background:transparent">Contactar</a></div>
@@ -53,12 +66,15 @@
         <p style="margin-top:14px;max-width:34ch">Epidemiology · Evidence · Data.<br>Formación, investigación y metodología para profesionales de la salud.</p>
       </div>
       <div><h5>Academy</h5><ul><li><a href="cursos.html#epi-methods">EPI-METHODS</a></li><li><a href="cursos.html#epi-data">EPI-DATA</a></li><li><a href="cursos.html#epi-causal">EPI-CAUSAL</a></li><li><a href="cursos.html#epi-evidence">EPI-EVIDENCE</a></li><li><a href="programas.html">EPI-LAB Researcher</a></li></ul></div>
-      <div><h5>Research &amp; Resources</h5><ul><li><a href="investigacion.html">Investigación</a></li><li><a href="recursos.html#tools">Tools</a></li><li><a href="recursos.html#cheatsheets">Cheatsheets</a></li><li><a href="blog.html">Insights</a></li></ul></div>
+      <div><h5>Research &amp; Resources</h5><ul><li><a href="investigacion.html">Investigación</a></li><li><a href="recursos.html#tools">Tools</a></li><li><a href="recursos.html#cheatsheets">Cheatsheets</a></li><li><a href="recursos.html#herramientas" data-epi-link="metaGrade">META GRADE</a></li><li><a href="recursos.html#herramientas" data-epi-link="book">Libro</a></li><li><a href="blog.html">Insights</a></li></ul></div>
       <div><h5>About</h5><ul><li><a href="nosotros.html">Nosotros</a></li><li><a href="nosotros.html#faculty">Faculty</a></li><li><a href="contacto.html">Contacto</a></li></ul></div>
     </div>
     <div class="legal"><span>© <span id="y">2026</span> EPI-LAB. Todos los derechos reservados.</span><span>Contenido con fines educativos; no sustituye el juicio clínico.</span></div>
   </div>
 </footer>
+<script src="assets/js/config.js"></script>
+<script src="assets/data/courses.js" defer></script>
+<script src="assets/js/catalog.js" defer></script>
 <script src="assets/js/main.js" defer></script>
 </body>
 </html>
