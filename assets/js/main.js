@@ -60,6 +60,23 @@
     }
   });
 
+
+  // Buscador lateral → catálogo (?q=)
+  if (list) {
+    var fq = document.createElement('form'); fq.className = 'side-search'; fq.setAttribute('role', 'search'); fq.action = ROOT + 'cursos.html'; fq.method = 'get';
+    fq.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg><input type="search" name="q" placeholder="Buscar cursos…" aria-label="Buscar cursos" autocomplete="off"><kbd>/</kbd>';
+    list.insertBefore(fq, list.firstChild);
+    document.addEventListener('keydown', function (e) { if (e.key === '/' && !/INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName)) { e.preventDefault(); fq.querySelector('input').focus(); } });
+    var cur = list.querySelector('.has-sub [aria-current="page"]'); if (cur) cur.closest('.has-sub').classList.add('open');
+  }
+
+  // Inicio: continuar la unidad de muestra o invitar a probarla
+  var cont = document.getElementById('continue');
+  if (cont) {
+    var p = 0; try { p = +localStorage.getItem('epi-aula-p:c1-u2') || 0; } catch (e) { }
+    cont.innerHTML = '<div class="eyebrow">' + (p ? 'Continúa donde quedaste' : 'Prueba antes de inscribirte') + '</div><h3>Medidas de asociación y de efecto</h3><p>Unidad gratuita con calculadora 2×2, lectura, práctica y cuestionario. Sin registro.</p><div class="meter" aria-label="Progreso"><i style="width:' + p + '%"></i></div><a class="btn btn-primary" href="' + ROOT + 'muestra/index.html">' + (p ? 'Seguir (' + p + ' %)' : 'Probar una unidad gratis') + '</a>';
+  }
+
   // Botón flotante: WhatsApp si hay número, si no, contacto
   var wa = document.createElement('a');
   wa.className = 'wa';

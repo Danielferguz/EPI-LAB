@@ -93,5 +93,6 @@
     if (R[h]) { st.route = h; sync(); render(); }
   }
   window.addEventListener('hashchange', fromHash);
+  var qp = new URLSearchParams(location.search).get('q'); if (qp) { st.q = qp; document.getElementById('cq').value = qp; }
   sync(); render(); fromHash();
 })();
