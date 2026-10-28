@@ -1,6 +1,16 @@
 /* Catálogo de cursos. Edita date (ISO, ej. "2026-11-14"), duration (ej. "5 semanas") y status: "abierto" | "proximo" | "agotado". */
 window.EPI_COURSES = [
  {
+  "id": "p1",
+  "route": "epi-data",
+  "title": "Regresión logística y Poisson con varianza robusta",
+  "level": "Intermedio",
+  "desc": "Elige, ejecuta e interpreta OR, RP, RR y razón de tasas con EPI-DATA. Curso práctico con videos cortos, lecturas y talleres.",
+  "date": "",
+  "duration": "A tu ritmo · ≈ 3 h",
+  "status": "proximo"
+ },
+ {
   "id": "c1",
   "route": "epi-methods",
   "title": "Fundamentos de epidemiología clínica",

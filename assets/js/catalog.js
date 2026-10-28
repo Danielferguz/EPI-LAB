@@ -38,7 +38,7 @@
       '<div class="cband"><span class="badge">' + STATUS[c.status] + '</span><span class="ic">' + (ICONS[c.route] || '') + '</span></div>' +
       '<div class="cbody"><div class="cmeta"><span class="lvl">' + r.n + '</span></div><h3>' + esc(c.title) + '</h3>' +
       '<div class="cmeta"><span>' + c.level + '</span><span>' + esc(when) + '</span>' + (c.duration ? '<span>' + esc(c.duration) + '</span>' : '') + '</div>' +
-      '<button class="btn btn-ghost" data-id="' + c.id + '">Más información</button></div></article>';
+      '<button class="btn btn-ghost" data-id="' + c.id + '">Más información</button>' + (window.EPI_COURSE_DETAILS && window.EPI_COURSE_DETAILS[c.id] ? ' <a class="btn btn-primary" href="curso.html?c=' + c.id + '">Ver curso</a>' : '') + '</div></article>';
   }
 
   function render() {
@@ -69,7 +69,7 @@
     dlg.innerHTML = '<div><div class="dlg-head" style="--c1:' + r.c1 + ';--c2:' + r.c2 + '"><span class="badge">' + r.n + ' · ' + STATUS[c.status] + '</span><h3>' + esc(c.title) + '</h3>' +
       '<span class="dlg-ic">' + (ICONS[c.route] || '') + '</span><button class="dlg-x" aria-label="Cerrar" data-close>×</button></div>' +
       '<div class="dlg-body"><p>' + esc(c.desc) + '</p><dl><dt>Nivel</dt><dd>' + c.level + '</dd><dt>Inicio</dt><dd>' + esc(fmt(c.date) || 'Por anunciar') + '</dd><dt>Duración</dt><dd>' + esc(c.duration || 'Por definir') + '</dd><dt>Área</dt><dd>' + r.n + '</dd></dl>' +
-      '<div class="btn-row" style="margin:0"><a class="btn btn-primary" href="' + contact + '">Solicitar información</a>' +
+      '<div class="btn-row" style="margin:0">' + (window.EPI_COURSE_DETAILS && window.EPI_COURSE_DETAILS[c.id] ? '<a class="btn btn-primary" href="curso.html?c=' + c.id + '">Ver curso completo</a><a class="btn btn-ghost" href="' + contact + '">Solicitar información</a>' : '<a class="btn btn-primary" href="' + contact + '">Solicitar información</a>') +
       (wa ? '<a class="btn btn-ghost" target="_blank" rel="noopener" href="https://wa.me/' + wa + '?text=' + encodeURIComponent('Hola EPI-LAB, me interesa: ' + c.title) + '">WhatsApp</a>' : '') + '</div></div></div>';
     dlg.showModal();
   }
