@@ -1,0 +1,179 @@
+---
+title: "EPI-CAUSAL en R: puntaje de propensión, ponderación y g-computación"
+subtitle: "Reproduce lo que haces en EPI-CAUSAL con código (pestaña por tipo de análisis)"
+lang: es
+format:
+  html:
+    toc: true
+    toc-depth: 2
+    code-tools: true
+    embed-resources: true
+    tabsets: true
+execute:
+  echo: true
+  warning: false
+  message: false
+  fig-width: 7
+  fig-height: 4.5
+---
+
+## 0. Preparación
+
+**Pregunta:** ¿el exceso de peso (IMC ≥ 30, `obeso`) aumenta el riesgo de diabetes? Es el ejemplo «PSM · IMC → diabetes» de EPI-CAUSAL (datos del material del curso: `nhanes_diabetes.csv`). Estimando: **ATT** (efecto en los que tienen obesidad).
+
+```{r}
+# pacman instala (si falta) y carga todo de una vez
+if (!requireNamespace("pacman", quietly = TRUE)) install.packages("pacman")
+pacman::p_load(tidyverse, gtsummary, MatchIt, cobalt, WeightIt, marginaleffects, sandwich, broom, modelsummary, pROC, ggview)
+set.seed(2024)   # el emparejamiento y el bootstrap usan azar: la semilla hace el resultado repetible
+# ggview::canvas() fija el tamaño de la figura mientras la exploras en RStudio (ggview()); al compilar el informe se ignora y mandan fig-width y fig-height
+canvas <- function(...) if (isTRUE(getOption("knitr.in.progress"))) NULL else ggview::canvas(...)
+```
+
+```{r}
+# En EPI-CAUSAL: pestaña «Datos» → ejemplo. Aquí leemos el CSV (con haven::read_dta() leerías un .dta de Stata)
+d0 <- read_csv("nhanes_diabetes.csv", na = c("", "NA"), show_col_types = FALSE) |>
+  mutate(obeso = as.integer(obeso == "Sí"), diab = as.integer(diabetes == "Yes"))
+c(filas = nrow(d0), sin_exposicion = sum(is.na(d0$obeso)))
+```
+
+```{r}
+# «Pregunta»: exposición, desenlace y confusores elegidos a priori (aquí con un DAG de epidemiología descriptiva)
+conf <- c("gender", "age", "race", "education", "married", "income")
+d <- d0 |> drop_na(obeso, diab, all_of(conf))        # «Datos perdidos»: casos completos
+c(analizados = nrow(d), obesos = sum(d$obeso), no_obesos = sum(1 - d$obeso))   # EPI-CAUSAL: 4101 (1129 con obesidad)
+f <- reformulate(conf, response = "obeso")           # obeso ~ gender + age + race + ...
+f
+```
+
+## 1. Tabla 1 y balance inicial
+
+::: {.panel-tabset}
+
+### Tabla 1 (gtsummary)
+
+```{r}
+d |>
+  mutate(obeso = factor(obeso, 0:1, c("Sin obesidad", "Con obesidad"))) |>
+  select(obeso, all_of(conf), diab) |>
+  tbl_summary(by = obeso, statistic = list(all_continuous() ~ "{mean} ({sd})")) |>
+  add_overall() |> add_p() |> bold_labels()
+```
+
+### Diferencias estandarizadas (cobalt)
+
+```{r}
+# En EPI-CAUSAL: pestaña «Balance», columna «antes». Regla habitual: |DEM| < 0,1
+bal.tab(f, data = d, estimand = "ATT", un = TRUE, thresholds = c(m = 0.1))
+```
+
+:::
+
+## 2. Puntaje de propensión
+
+```{r}
+#| fig-cap: "Superposición del puntaje de propensión"
+ps <- glm(f, data = d, family = binomial)
+d$ps <- predict(ps, type = "response")
+c(`estadístico C` = as.numeric(pROC::auc(pROC::roc(d$obeso, d$ps, quiet = TRUE))))   # EPI-CAUSAL: 0,61
+ggplot(d, aes(ps, fill = factor(obeso, 0:1, c("Sin obesidad", "Con obesidad")))) +
+  geom_density(alpha = 0.55) +
+  scale_fill_manual(values = c("#C9801A", "#2E79C7")) +
+  labs(x = "Puntaje de propensión", y = "Densidad", fill = NULL) +
+  theme_minimal(base_size = 13) + theme(legend.position = "top") +
+  canvas(7, 4)    # ggview: fija el tamaño de la figura (ver con ggview() en RStudio; ggsave() lo respeta)
+```
+
+## 3. Estimación del efecto (un método por pestaña)
+
+::: {.panel-tabset}
+
+### Crudo y regresión ajustada
+
+```{r}
+crudo <- glm(diab ~ obeso, data = d, family = poisson)
+ajust <- glm(reformulate(c("obeso", conf), response = "diab"), data = d, family = binomial)
+rbind(`RR crudo` = exp(coef(crudo)["obeso"]), `OR ajustado (condicional)` = exp(coef(ajust)["obeso"])) |> round(2)
+```
+
+### Emparejamiento por PS (MatchIt)
+
+```{r}
+# «Métodos y resultados» → Emparejamiento por PS (vecino más cercano, caliper 0,2 DE del logit)
+m <- matchit(f, data = d, method = "nearest", distance = "glm", link = "linear.logit", caliper = 0.2, estimand = "ATT")
+summary(m)$nn      # EPI-CAUSAL: 1129 de 1129 tratados emparejados
+md <- match.data(m)
+fit_m <- glm(diab ~ obeso, data = md, family = quasibinomial, weights = weights)
+tratados <- subset(md, obeso == 1)
+avg_comparisons(fit_m, variables = "obeso", newdata = tratados, vcov = ~subclass, wts = "weights", comparison = "ratioavg")   # razón de riesgos
+avg_comparisons(fit_m, variables = "obeso", newdata = tratados, vcov = ~subclass, wts = "weights")                         # diferencia de riesgos
+```
+
+```{r}
+#| fig-cap: "Balance antes y después de emparejar (gráfico de Love)"
+love.plot(m, thresholds = c(m = 0.1), abs = TRUE, var.order = "unadjusted", colors = c("#C9801A", "#2E79C7")) + canvas(7, 5)
+```
+
+### Ponderación por PS (IPTW, WeightIt)
+
+```{r}
+w <- weightit(f, data = d, method = "glm", estimand = "ATT")
+summary(w)$effective.sample.size       # EPI-CAUSAL: tamaño efectivo del grupo control
+fit_w <- glm(diab ~ obeso, data = d, family = quasibinomial, weights = w$weights)
+tratados <- subset(d, obeso == 1)
+avg_comparisons(fit_w, variables = "obeso", newdata = tratados, vcov = "HC3", comparison = "ratioavg")
+avg_comparisons(fit_w, variables = "obeso", newdata = tratados, vcov = "HC3")
+```
+
+```{r}
+bal.tab(w, thresholds = c(m = 0.1), un = TRUE, disp.v.ratio = FALSE)
+```
+
+### Estandarización (g-computación)
+
+```{r}
+# Modelo del desenlace con interacciones; se predice con y sin obesidad en los tratados
+fit_g <- glm(reformulate(c(paste0("obeso * ", conf)), response = "diab"), data = d, family = binomial)
+avg_comparisons(fit_g, variables = "obeso", newdata = subset(d, obeso == 1), comparison = "ratioavg")
+avg_comparisons(fit_g, variables = "obeso", newdata = subset(d, obeso == 1))
+```
+
+:::
+
+## 4. Comparar métodos y reportar
+
+```{r}
+res <- bind_rows(
+  avg_comparisons(fit_m, variables = "obeso", newdata = subset(md, obeso == 1), vcov = ~subclass, wts = "weights", comparison = "ratioavg") |> mutate(metodo = "Emparejamiento por PS"),
+  avg_comparisons(fit_w, variables = "obeso", newdata = subset(d, obeso == 1), vcov = "HC3", comparison = "ratioavg") |> mutate(metodo = "IPTW (ATT)"),
+  avg_comparisons(fit_g, variables = "obeso", newdata = subset(d, obeso == 1), comparison = "ratioavg") |> mutate(metodo = "G-computación")
+) |> select(metodo, RR = estimate, `IC inf` = conf.low, `IC sup` = conf.high)
+res |> mutate(across(where(is.numeric), \(x) round(x, 2))) |> knitr::kable(caption = "Razón de riesgos en los tratados (ATT); el crudo fue 3,40")
+```
+
+```{r}
+#| fig-cap: "Razón de riesgos por método (ATT)"
+ggplot(res, aes(RR, reorder(metodo, RR))) +
+  geom_vline(xintercept = 1, linetype = "dashed") +
+  geom_pointrange(aes(xmin = `IC inf`, xmax = `IC sup`), colour = "#2E79C7", size = 0.8) +
+  labs(x = "Razón de riesgos (IC 95 %)", y = NULL) + theme_minimal(base_size = 13) + canvas(7, 3.2)
+```
+
+## 5. Sensibilidad: E-value
+
+```{r}
+# EPI-CAUSAL: pestaña «Sensibilidad y reporte» (VanderWeele y Ding, 2017). Para RR > 1: E = RR + sqrt(RR (RR - 1))
+evalue <- function(rr) ifelse(rr < 1, evalue(1 / rr), rr + sqrt(rr * (rr - 1)))
+rr <- res$RR[res$metodo == "G-computación"]; lim <- res$`IC inf`[res$metodo == "G-computación"]
+c(RR = rr, `E-value (estimación)` = evalue(rr), `E-value (límite del IC)` = evalue(lim)) |> round(2)   # EPI-CAUSAL: 5,97 y 4,80
+```
+
+## Cómo interpretar y reportar
+
+- Si los métodos con supuestos distintos coinciden (aquí el RR ronda 3,1–3,3), la conclusión es robusta; **ninguno corrige confusores no medidos**.
+- Los números del emparejamiento difieren algo de EPI-CAUSAL porque los algoritmos de emparejamiento no son idénticos (orden y desempates); la diferencia de riesgos y el IPTW/g-computación coinciden.
+- **Qué piden las revistas:** pregunta y estimando, confusores justificados (DAG), modelo del PS, superposición, balance antes y después, resultados por método con IC y un análisis de sensibilidad (STROBE 16; guías de inferencia causal con datos observacionales).
+
+```{r}
+sessionInfo()
+```

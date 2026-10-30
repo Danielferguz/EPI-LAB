@@ -1,0 +1,27 @@
+/* Herramientas de EPI-LAB. route = área de cursos donde se usan (ver courses.js). Acceso por URL en config.js → EPI.tools. */
+window.EPI_TOOLS = [
+ { id: "epi-data", name: "EPI-DATA", tag: "Análisis de bases clínicas", routes: ["epi-data"],
+   desc: "Guía de 8 pasos para analizar tus datos: regresión lineal, logística y Poisson robusta, supervivencia, longitudinal, datos perdidos y modelización, con supuestos y forest plots.",
+   topics: ["Regresión", "Datos perdidos", "Supervivencia", "Reporte"] },
+ { id: "epi-causal", name: "EPI-CAUSAL", tag: "Inferencia causal observacional", routes: ["epi-causal"],
+   desc: "Emparejamiento y ponderación por puntaje de propensión, IPW, métodos G y TMLE, con ejemplos que siguen el esquema del curso.",
+   topics: ["PSM / PSW", "IPW", "Métodos G", "TMLE"] },
+ { id: "epi-graphics", name: "EPI-GRAPHICS", tag: "Figuras para revistas", routes: ["epi-research", "epi-evidence"],
+   desc: "Figuras listas para publicar (barras, forest plots, Kaplan-Meier y más) en SVG, PNG o TIFF, al ancho de columna y DPI que pide la revista.",
+   topics: ["Forest plot", "Kaplan-Meier", "SVG / TIFF", "Paletas"] },
+ { id: "epi-ml", name: "EPI-ML", tag: "Predicción con aprendizaje automático", routes: ["epi-clinical", "epi-data"],
+   desc: "Laboratorio de sobreajuste, validación cruzada, lasso/ridge, bosques, boosting y Super Learner, con advertencias de tamaño de muestra.",
+   topics: ["Super Learner", "Validación", "Sobreajuste", "Calibración"] },
+ { id: "epi-predic", name: "EPI-PREDIC", tag: "Modelos de predicción clínica", routes: ["epi-clinical"],
+   desc: "Desarrolla, valida y reporta modelos de predicción siguiendo TRIPOD+AI, con cálculo de tamaño de muestra y validación por bootstrap.",
+   topics: ["TRIPOD+AI", "Tamaño de muestra", "Bootstrap", "Calibración"] },
+ { id: "epi-rob", name: "EPI-ROB", tag: "Riesgo de sesgo", routes: ["epi-evidence"],
+   desc: "RoB 2, ROBINS-I y E, QUADAS-2, PROBAST, AMSTAR 2 y más, con dos revisores, kappa de acuerdo y figuras tipo semáforo.",
+   topics: ["RoB 2", "ROBINS", "Kappa", "Semáforo"] },
+ { id: "epi-its", name: "EPI-ITS", tag: "Series temporales interrumpidas", routes: ["epi-causal", "epi-clinical"],
+   desc: "Mide el cambio tras una o varias intervenciones, con pronóstico del contrafactual y datos agregados o individuales.",
+   topics: ["Regresión segmentada", "Contrafactual", "Estacionalidad", "Paneles"] },
+ { id: "meta-grade", name: "META GRADE", tag: "Metaanálisis y certeza de la evidencia", routes: ["epi-evidence"],
+   desc: "Metaanálisis por pares y en red con Core GRADE, tablas Summary of Findings y texto de métodos.",
+   topics: ["Metaanálisis", "NMA", "GRADE", "SoF"] }
+];

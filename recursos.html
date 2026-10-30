@@ -1,6 +1,8 @@
 <!doctype html>
 <html lang="es">
 <head>
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'sha256-pfgOMgfVZwm2ODyms34QYW9h8EwicylhV77q5LHK8c0='; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self'; connect-src 'self'; frame-src 'self' https://*.thinkific.com https://player.vimeo.com https://www.youtube-nocookie.com; object-src 'none'; base-uri 'self'; form-action 'self' mailto:">
+<meta name="referrer" content="strict-origin-when-cross-origin">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Recursos · EPI-LAB Tools & Cheatsheets</title>
@@ -11,9 +13,6 @@
 <meta property="og:type" content="website">
 <script>document.documentElement.className+=" js"</script>
 <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
@@ -26,10 +25,13 @@
 <li><a href="index.html">Inicio</a></li>
 <li><a href="calendario.html">Calendario</a></li>
 <li class="has-sub"><a href="cursos.html">Cursos</a><button class="sub-toggle" aria-label="Abrir submenú de cursos" aria-expanded="false"></button><ul class="sub"><li><a href="cursos.html#epi-methods"><svg viewBox="0 0 64 64" fill="none" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="32" r="4.5" fill="#8B2E3B"/><path d="M14 32h8c8 0 8-17 20-17M22 32h22M22 32c8 0 8 17 20 17" stroke="#4D4D4D" stroke-width="3"/><circle cx="49" cy="15" r="5" fill="#4D4D4D"/><circle cx="49" cy="32" r="5" fill="#5BA7B8"/><circle cx="49" cy="49" r="5" fill="#4D4D4D"/></svg>EPI-METHODS</a></li><li><a href="cursos.html#epi-data"><svg viewBox="0 0 64 64"><rect x="8" y="38" width="9" height="14" rx="1.5" fill="#4D4D4D"/><rect x="21" y="30" width="9" height="22" rx="1.5" fill="#5BA7B8"/><rect x="34" y="22" width="9" height="30" rx="1.5" fill="#5BA7B8"/><rect x="47" y="17" width="9" height="35" rx="1.5" fill="#4D4D4D"/><circle cx="51.500" cy="9" r="4.500" fill="#8B2E3B"/></svg>EPI-DATA</a></li><li><a href="cursos.html#epi-causal"><svg viewBox="0 0 64 64" fill="none" stroke="#4D4D4D" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="32" r="6" fill="#8B2E3B" stroke="none"/><circle cx="40" cy="14" r="7" fill="#5BA7B8" stroke="none"/><circle cx="40" cy="50" r="7" fill="#4D4D4D" stroke="none"/><path d="M18 29l15-11M28 20l6-3-2 7M18 35l15 11M29 44l5 3-2-7M48 18c11 6 11 22 0 28M45 43l3 3-4 3"/></svg>EPI-CAUSAL</a></li><li><a href="cursos.html#epi-evidence"><svg viewBox="0 0 64 64" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="3.2"><path d="M32 8L55 19 32 30 9 19z" stroke="#4D4D4D"/><path d="M9 28l23 11 23-11" stroke="#5BA7B8"/><path d="M9 37l23 11 23-11" stroke="#8B2E3B"/><path d="M9 46l23 11 23-11" stroke="#4D4D4D" opacity=".0"/></svg>EPI-EVIDENCE</a></li><li><a href="cursos.html#epi-clinical"><svg viewBox="0 0 64 64" fill="none" stroke="#4D4D4D" stroke-width="2.6" stroke-linecap="round"><path d="M32 17L18 28M32 17l14 11M17 37l13 12M47 37L34 49"/><circle cx="32" cy="12" r="6.500" fill="#5BA7B8" stroke="none"/><circle cx="13" cy="32" r="7" fill="#8B2E3B" stroke="none"/><circle cx="51" cy="32" r="6" fill="#4D4D4D" stroke="none"/><circle cx="32" cy="53" r="6" fill="#4D4D4D" stroke="none"/></svg>EPI-CLINICAL</a></li><li><a href="cursos.html#epi-research"><svg viewBox="0 0 64 64" fill="none" stroke-linecap="round" stroke-linejoin="round"><rect x="11" y="10" width="38" height="46" rx="4" stroke="#4D4D4D" stroke-width="3.2"/><path d="M20 25h20M20 33h20M20 41h13" stroke="#5BA7B8" stroke-width="3.6"/><circle cx="51" cy="11" r="5.500" fill="#8B2E3B"/></svg>EPI-RESEARCH</a></li><li><hr></li><li><a href="programas.html">Programas</a></li><li><a href="cursos.html#cases">EPI-LAB Cases</a></li></ul></li>
+<li><a href="herramientas.html">Herramientas</a></li>
+<li><a href="precios.html">Precios</a></li>
 <li><a href="instituciones.html">Para instituciones</a></li>
 <li class="has-sub"><a href="nosotros.html">Nosotros</a><button class="sub-toggle" aria-label="Abrir submenú de nosotros" aria-expanded="false"></button><ul class="sub"><li><a href="nosotros.html">Quiénes somos</a></li><li><a href="investigacion.html">Investigación</a></li><li><a href="nosotros.html#faculty">Faculty</a></li><li><a href="contacto.html">Contacto</a></li></ul></li>
 <li class="has-sub"><a href="recursos.html" aria-current="page">Recursos</a><button class="sub-toggle" aria-label="Abrir submenú de recursos" aria-expanded="false"></button><ul class="sub"><li><a href="recursos.html#herramientas">META GRADE y libro</a></li><li><a href="recursos.html#calculadoras">Calculadoras</a></li><li><a href="recursos.html#tools">Descargables</a></li><li><a href="recursos.html#cheatsheets">Cheatsheets</a></li><li><a href="blog.html">Insights · Blog</a></li></ul></li>
 <li><a href="certificado.html">Certificado</a></li>
+<li><a class="try" href="aula/index.html">Aula abierta</a></li>
 <li class="actions"><a class="btn-aula" data-epi-link="virtualClassroom" data-epi-quiet href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/></svg>Aula virtual</a><a class="icon-btn" data-epi-link="shop" data-epi-quiet href="#" aria-label="Tienda" title="Tienda"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="20" r="1.4"/><circle cx="18" cy="20" r="1.4"/><path d="M2 3h3l2.6 12.2a1 1 0 0 0 1 .8h8.8a1 1 0 0 0 1-.8L20 7H6"/></svg></a><a class="icon-btn" href="cursos.html#faq" aria-label="Ayuda" title="Ayuda"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9.5"/><path d="M9.500 9.500a2.600 2.600 0 1 1 3.700 2.300c-.8.400-1.200 1-1.200 1.900M12 17h.01"/></svg></a></li>
 </ul>
   </div>
@@ -51,7 +53,7 @@
 <button class="tab" role="tab" aria-selected="false" aria-controls="p-cv">OR → RR</button>
 </div>
 <div class="tabpanel" id="p-ss"><div class="calc">
-<form id="ss-form" onsubmit="return false"><div class="chipbar" style="margin-bottom:14px"><button type="button" class="tab on" data-ss="prop">Dos proporciones</button><button type="button" class="tab" data-ss="mean">Dos medias</button></div>
+<form id="ss-form"><div class="chipbar" style="margin-bottom:14px"><button type="button" class="tab on" data-ss="prop">Dos proporciones</button><button type="button" class="tab" data-ss="mean">Dos medias</button></div>
 <div class="fields">
 <div id="ss-prop" class="fields full"><label>Proporción grupo 1 (%)<input id="ss-p1" type="number" step="any" value="40"></label><label>Proporción grupo 2 (%)<input id="ss-p2" type="number" step="any" value="20"></label></div>
 <div id="ss-mean" class="fields full" hidden><label>Diferencia a detectar<input id="ss-delta" type="number" step="any" value="5"></label><label>Desviación estándar<input id="ss-sd" type="number" step="any" value="10"></label></div>
@@ -62,13 +64,13 @@
 </div></form>
 <div class="out" id="ss-out" aria-live="polite"></div></div></div>
 <div class="tabpanel" id="p-as" hidden><div class="calc">
-<form id="as-form" onsubmit="return false"><div class="fields">
+<form id="as-form"><div class="fields">
 <label>Expuestos con evento<input id="as-a" type="number" min="0" value="40"></label><label>Expuestos sin evento<input id="as-b" type="number" min="0" value="60"></label>
 <label>No expuestos con evento<input id="as-c" type="number" min="0" value="20"></label><label>No expuestos sin evento<input id="as-d" type="number" min="0" value="80"></label>
 </div><p style="color:var(--muted);font-size:.9rem;margin-top:14px">Intervalos de confianza al 95 % por el método logarítmico (RR, OR) y de Wald (diferencia de riesgos).</p></form>
 <div class="out" id="as-out" aria-live="polite"></div></div></div>
 <div class="tabpanel" id="p-cv" hidden><div class="calc">
-<form id="cv-form" onsubmit="return false"><div class="fields">
+<form id="cv-form"><div class="fields">
 <label>Odds ratio (OR)<input id="cv-or" type="number" step="any" min="0" value="2.67"></label><label>Riesgo basal en no expuestos (%)<input id="cv-p0" type="number" step="any" value="20"></label>
 </div><p style="color:var(--muted);font-size:.9rem;margin-top:14px">Útil para reinterpretar un OR de regresión logística cuando el desenlace es común. Lee <a href="blog/or-vs-rr.html">por qué un OR no es un RR</a>.</p></form>
 <div class="out" id="cv-out" aria-live="polite"></div></div></div>
@@ -88,7 +90,7 @@
       <div><h5>Recursos</h5><ul><li><a href="calendario.html">Calendario</a></li><li><a href="recursos.html#tools">Tools</a></li><li><a href="recursos.html#cheatsheets">Cheatsheets</a></li><li><a href="blog.html">Insights</a></li><li><a href="recursos.html#herramientas" data-epi-link="metaGrade" data-epi-quiet>META GRADE</a></li><li><a href="recursos.html#herramientas" data-epi-link="book" data-epi-quiet>Libro</a></li></ul></div>
       <div><h5>EPI-LAB</h5><ul><li><a href="nosotros.html">Nosotros</a></li><li><a href="investigacion.html">Investigación</a></li><li><a href="instituciones.html">Para instituciones</a></li><li><a href="certificado.html">Certificado</a></li><li><a href="contacto.html">Contacto</a></li></ul></div>
     </div>
-    <div class="legal"><span>© 2026 EPI-LAB. Todos los derechos reservados.</span><span>Contenido con fines educativos; no sustituye el juicio clínico.</span></div>
+    <div class="legal"><span>© 2026 EPI-LAB. Todos los derechos reservados. · <a href="privacidad.html" style="color:inherit;text-decoration:underline">Privacidad</a> · <a href="terminos.html" style="color:inherit;text-decoration:underline">Términos</a></span><span>Contenido con fines educativos; no sustituye el juicio clínico.</span></div>
   </div>
 </footer>
 <script src="assets/js/config.js"></script>

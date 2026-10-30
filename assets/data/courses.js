@@ -1,6 +1,16 @@
 /* Catálogo de cursos. Edita date (ISO, ej. "2026-11-14"), duration (ej. "5 semanas") y status: "abierto" | "proximo" | "agotado". */
 window.EPI_COURSES = [
  {
+  "id": "p1",
+  "route": "epi-data",
+  "title": "Regresión logística y Poisson con varianza robusta",
+  "level": "Intermedio",
+  "desc": "Elige, ejecuta e interpreta OR, RP, RR y razón de tasas con EPI-DATA. Curso práctico con videos cortos, lecturas y talleres.",
+  "date": "",
+  "duration": "A tu ritmo · ≈ 3 h",
+  "status": "proximo"
+ },
+ {
   "id": "c1",
   "route": "epi-methods",
   "title": "Fundamentos de epidemiología clínica",
@@ -125,7 +135,7 @@ window.EPI_COURSES = [
   "route": "epi-data",
   "title": "Estadística para investigadores clínicos",
   "level": "Básico",
-  "desc": "Descripción, inferencia, intervalos de confianza y valores p con criterio clínico.",
+  "desc": "De cero a las pruebas de hipótesis: t, χ², ANOVA, pruebas por rangos y correlación, con animaciones y criterio clínico.",
   "date": "",
   "duration": "",
   "status": "proximo"
@@ -133,19 +143,9 @@ window.EPI_COURSES = [
  {
   "id": "c14",
   "route": "epi-data",
-  "title": "R desde cero",
+  "title": "R desde cero: reproduce tus análisis de EPI-DATA",
   "level": "Básico",
-  "desc": "Importar, limpiar, visualizar y analizar datos con R y RStudio.",
-  "date": "",
-  "duration": "",
-  "status": "proximo"
- },
- {
-  "id": "c15",
-  "route": "epi-data",
-  "title": "Stata para investigación clínica",
-  "level": "Básico",
-  "desc": "Flujo de trabajo reproducible en Stata con do-files.",
+  "desc": "R, RStudio y Quarto con salidas reales: importar, limpiar, describir, graficar, comparar, modelar, analizar supervivencia y reportar con los ejemplos de EPI-DATA.",
   "date": "",
   "duration": "",
   "status": "proximo"
@@ -456,6 +456,16 @@ window.EPI_COURSES = [
   "title": "Ética y ciencia abierta",
   "level": "Intermedio",
   "desc": "Ética de la investigación, registro de protocolos y datos abiertos.",
+  "date": "",
+  "duration": "",
+  "status": "proximo"
+ },
+ {
+  "id": "c47",
+  "route": "epi-data",
+  "title": "Talleres con las herramientas EPI",
+  "level": "Básico",
+  "desc": "Talleres paso a paso con capturas anotadas: qué pulsar en cada herramienta, qué ocurre, cómo interpretar la salida y cómo piden las revistas reportarla.",
   "date": "",
   "duration": "",
   "status": "proximo"
