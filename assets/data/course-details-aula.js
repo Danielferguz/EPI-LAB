@@ -16,10 +16,10 @@ window.EPI_COURSE_DETAILS = Object.assign(window.EPI_COURSE_DETAILS || {}, {
    "Entender qué dicen y qué no dicen el IC 95 % y el valor p, con un simulador de muestreo repetido."
   ],
   "includes": [
-   "3 unidades interactivas (27 diapositivas animadas)",
+   "3 unidades interactivas (50 diapositivas animadas)",
    "Lectura con fórmulas y ejemplos en cada unidad",
    "7 prácticas con respuesta y 12 preguntas de cuestionario",
-   "Simuladores interactivos (7) y cálculos animados",
+   "Simuladores interactivos (8) y cálculos animados",
    "Con plantillas para copiar"
   ],
   "modules": [
@@ -117,7 +117,7 @@ window.EPI_COURSE_DETAILS = Object.assign(window.EPI_COURSE_DETAILS || {}, {
    "Reconocer la direccionalidad temporal y armar un protocolo ordenado."
   ],
   "includes": [
-   "3 unidades interactivas (18 diapositivas animadas)",
+   "3 unidades interactivas (33 diapositivas animadas)",
    "Lectura con fórmulas y ejemplos en cada unidad",
    "4 prácticas con respuesta y 12 preguntas de cuestionario",
    "Simuladores interactivos (2) y cálculos animados",
@@ -218,7 +218,7 @@ window.EPI_COURSE_DETAILS = Object.assign(window.EPI_COURSE_DETAILS || {}, {
    "Reconocer los sesgos típicos y reportar según STROBE."
   ],
   "includes": [
-   "3 unidades interactivas (19 diapositivas animadas)",
+   "3 unidades interactivas (35 diapositivas animadas)",
    "Lectura con fórmulas y ejemplos en cada unidad",
    "3 prácticas con respuesta y 12 preguntas de cuestionario",
    "Simuladores interactivos (4) y cálculos animados",
@@ -319,7 +319,7 @@ window.EPI_COURSE_DETAILS = Object.assign(window.EPI_COURSE_DETAILS || {}, {
    "Decidir cuál usar y cómo ajustar el análisis."
   ],
   "includes": [
-   "3 unidades interactivas (20 diapositivas animadas)",
+   "3 unidades interactivas (35 diapositivas animadas)",
    "Lectura con fórmulas y ejemplos en cada unidad",
    "3 prácticas con respuesta y 12 preguntas de cuestionario",
    "Simuladores interactivos (6) y cálculos animados"
@@ -419,7 +419,7 @@ window.EPI_COURSE_DETAILS = Object.assign(window.EPI_COURSE_DETAILS || {}, {
    "Analizar según la asignación, manejar pérdidas y reportar con CONSORT."
   ],
   "includes": [
-   "3 unidades interactivas (21 diapositivas animadas)",
+   "3 unidades interactivas (37 diapositivas animadas)",
    "Lectura con fórmulas y ejemplos en cada unidad",
    "3 prácticas con respuesta y 12 preguntas de cuestionario",
    "Simuladores interactivos (3) y cálculos animados",
@@ -520,7 +520,7 @@ window.EPI_COURSE_DETAILS = Object.assign(window.EPI_COURSE_DETAILS || {}, {
    "Elegir supuestos realistas y redactar el párrafo del protocolo."
   ],
   "includes": [
-   "3 unidades interactivas (20 diapositivas animadas)",
+   "3 unidades interactivas (39 diapositivas animadas)",
    "Lectura con fórmulas y ejemplos en cada unidad",
    "4 prácticas con respuesta y 12 preguntas de cuestionario",
    "Simuladores interactivos (5) y cálculos animados",
@@ -621,7 +621,7 @@ window.EPI_COURSE_DETAILS = Object.assign(window.EPI_COURSE_DETAILS || {}, {
    "Definir un confusor, reconocerlo con datos estratificados y controlarlo."
   ],
   "includes": [
-   "3 unidades interactivas (18 diapositivas animadas)",
+   "3 unidades interactivas (33 diapositivas animadas)",
    "Lectura con fórmulas y ejemplos en cada unidad",
    "4 prácticas con respuesta y 12 preguntas de cuestionario",
    "Simuladores interactivos (5) y cálculos animados"
@@ -721,7 +721,7 @@ window.EPI_COURSE_DETAILS = Object.assign(window.EPI_COURSE_DETAILS || {}, {
    "Un recorrido ordenado para juzgar un estudio: pregunta, diseño, sesgos, resultados y aplicabilidad."
   ],
   "includes": [
-   "3 unidades interactivas (19 diapositivas animadas)",
+   "3 unidades interactivas (34 diapositivas animadas)",
    "Lectura con fórmulas y ejemplos en cada unidad",
    "3 prácticas con respuesta y 12 preguntas de cuestionario",
    "Simuladores interactivos (4) y cálculos animados",
@@ -822,7 +822,7 @@ window.EPI_COURSE_DETAILS = Object.assign(window.EPI_COURSE_DETAILS || {}, {
    "Elegir un punto de corte, leer la curva ROC y redactar un estudio de exactitud diagnóstica."
   ],
   "includes": [
-   "3 unidades interactivas (18 diapositivas animadas)",
+   "3 unidades interactivas (37 diapositivas animadas)",
    "Lectura con fórmulas y ejemplos en cada unidad",
    "5 prácticas con respuesta y 12 preguntas de cuestionario",
    "Simuladores interactivos (3) y cálculos animados",
@@ -923,7 +923,7 @@ window.EPI_COURSE_DETAILS = Object.assign(window.EPI_COURSE_DETAILS || {}, {
    "Validar el modelo, reconocer el optimismo y reportar según TRIPOD."
   ],
   "includes": [
-   "3 unidades interactivas (17 diapositivas animadas)",
+   "3 unidades interactivas (32 diapositivas animadas)",
    "Lectura con fórmulas y ejemplos en cada unidad",
    "3 prácticas con respuesta y 12 preguntas de cuestionario",
    "Simuladores interactivos (1) y cálculos animados",
@@ -1025,7 +1025,7 @@ window.EPI_COURSE_DETAILS = Object.assign(window.EPI_COURSE_DETAILS || {}, {
    "Plantear la pregunta, el diseño y reportar con la guía RECORD."
   ],
   "includes": [
-   "3 unidades interactivas (16 diapositivas animadas)",
+   "3 unidades interactivas (31 diapositivas animadas)",
    "Lectura con fórmulas y ejemplos en cada unidad",
    "3 prácticas con respuesta y 12 preguntas de cuestionario",
    "Con plantillas para copiar, listas de verificación"
@@ -1125,7 +1125,7 @@ window.EPI_COURSE_DETAILS = Object.assign(window.EPI_COURSE_DETAILS || {}, {
    "Seguir las fases de una adaptación transcultural y planificar la validación del instrumento adaptado."
   ],
   "includes": [
-   "3 unidades interactivas (15 diapositivas animadas)",
+   "3 unidades interactivas (31 diapositivas animadas)",
    "Lectura con fórmulas y ejemplos en cada unidad",
    "3 prácticas con respuesta y 12 preguntas de cuestionario",
    "Con hojas de trabajo"
@@ -1225,10 +1225,10 @@ window.EPI_COURSE_DETAILS = Object.assign(window.EPI_COURSE_DETAILS || {}, {
    "Medir la fuerza de una relación lineal y comparar grupos con rangos cuando los datos no son normales."
   ],
   "includes": [
-   "3 unidades interactivas (21 diapositivas animadas)",
+   "3 unidades interactivas (49 diapositivas animadas)",
    "Lectura con fórmulas y ejemplos en cada unidad",
    "4 prácticas con respuesta y 12 preguntas de cuestionario",
-   "Simuladores interactivos (4) y cálculos animados",
+   "Simuladores interactivos (8) y cálculos animados",
    "Con hojas de trabajo"
   ],
   "modules": [
@@ -1327,7 +1327,7 @@ window.EPI_COURSE_DETAILS = Object.assign(window.EPI_COURSE_DETAILS || {}, {
    "Hacer gráficos, ajustar una regresión logística y leer el OR."
   ],
   "includes": [
-   "3 unidades interactivas (16 diapositivas animadas)",
+   "3 unidades interactivas (31 diapositivas animadas)",
    "Lectura con fórmulas y ejemplos en cada unidad",
    "3 prácticas con respuesta y 12 preguntas de cuestionario",
    "Con plantillas para copiar"
@@ -1428,7 +1428,7 @@ window.EPI_COURSE_DETAILS = Object.assign(window.EPI_COURSE_DETAILS || {}, {
    "Ajustar por varias variables, interpretar cada coeficiente y escribir los resultados."
   ],
   "includes": [
-   "3 unidades interactivas (17 diapositivas animadas)",
+   "3 unidades interactivas (39 diapositivas animadas)",
    "Lectura con fórmulas y ejemplos en cada unidad",
    "4 prácticas con respuesta y 12 preguntas de cuestionario",
    "Simuladores interactivos (2) y cálculos animados",
@@ -1530,7 +1530,7 @@ window.EPI_COURSE_DETAILS = Object.assign(window.EPI_COURSE_DETAILS || {}, {
    "Evaluar si el modelo funciona (eventos por variable, calibración, discriminación) y reportar."
   ],
   "includes": [
-   "3 unidades interactivas (18 diapositivas animadas)",
+   "3 unidades interactivas (37 diapositivas animadas)",
    "Lectura con fórmulas y ejemplos en cada unidad",
    "4 prácticas con respuesta y 12 preguntas de cuestionario",
    "Simuladores interactivos (2) y cálculos animados",
@@ -1632,7 +1632,7 @@ window.EPI_COURSE_DETAILS = Object.assign(window.EPI_COURSE_DETAILS || {}, {
    "Comparar logística y Poisson robusta con los mismos datos y ver cómo cambia el mensaje."
   ],
   "includes": [
-   "3 unidades interactivas (18 diapositivas animadas)",
+   "3 unidades interactivas (35 diapositivas animadas)",
    "Lectura con fórmulas y ejemplos en cada unidad",
    "3 prácticas con respuesta y 12 preguntas de cuestionario",
    "Simuladores interactivos (2) y cálculos animados"
@@ -1733,7 +1733,7 @@ window.EPI_COURSE_DETAILS = Object.assign(window.EPI_COURSE_DETAILS || {}, {
    "Ajustar por covariables con el modelo de Cox e interpretar el HR ajustado."
   ],
   "includes": [
-   "3 unidades interactivas (18 diapositivas animadas)",
+   "3 unidades interactivas (39 diapositivas animadas)",
    "Lectura con fórmulas y ejemplos en cada unidad",
    "3 prácticas con respuesta y 12 preguntas de cuestionario",
    "Simuladores interactivos (3) y cálculos animados"
@@ -1834,7 +1834,7 @@ window.EPI_COURSE_DETAILS = Object.assign(window.EPI_COURSE_DETAILS || {}, {
    "Preparar los datos, interpretar el efecto del tiempo y de la interacción, y reportar."
   ],
   "includes": [
-   "3 unidades interactivas (17 diapositivas animadas)",
+   "3 unidades interactivas (33 diapositivas animadas)",
    "Lectura con fórmulas y ejemplos en cada unidad",
    "3 prácticas con respuesta y 12 preguntas de cuestionario",
    "Con hojas de trabajo"
@@ -1935,7 +1935,7 @@ window.EPI_COURSE_DETAILS = Object.assign(window.EPI_COURSE_DETAILS || {}, {
    "Planificar el análisis, comparar con casos completos y redactar la sección de datos perdidos."
   ],
   "includes": [
-   "3 unidades interactivas (18 diapositivas animadas)",
+   "3 unidades interactivas (35 diapositivas animadas)",
    "Lectura con fórmulas y ejemplos en cada unidad",
    "4 prácticas con respuesta y 12 preguntas de cuestionario",
    "Simuladores interactivos (1) y cálculos animados",
@@ -2037,7 +2037,7 @@ window.EPI_COURSE_DETAILS = Object.assign(window.EPI_COURSE_DETAILS || {}, {
    "Comprobar supuestos, validar el modelo y reportar con transparencia."
   ],
   "includes": [
-   "3 unidades interactivas (17 diapositivas animadas)",
+   "3 unidades interactivas (33 diapositivas animadas)",
    "Lectura con fórmulas y ejemplos en cada unidad",
    "3 prácticas con respuesta y 12 preguntas de cuestionario",
    "Simuladores interactivos (2) y cálculos animados"
@@ -2138,7 +2138,7 @@ window.EPI_COURSE_DETAILS = Object.assign(window.EPI_COURSE_DETAILS || {}, {
    "Dibujar un DAG para tu pregunta, documentarlo y usarlo para planificar el análisis."
   ],
   "includes": [
-   "3 unidades interactivas (16 diapositivas animadas)",
+   "3 unidades interactivas (31 diapositivas animadas)",
    "Lectura con fórmulas y ejemplos en cada unidad",
    "4 prácticas con respuesta y 12 preguntas de cuestionario",
    "Simuladores interactivos (1) y cálculos animados",
@@ -2240,7 +2240,7 @@ window.EPI_COURSE_DETAILS = Object.assign(window.EPI_COURSE_DETAILS || {}, {
    "Reconocer la confusión que queda después de ajustar y cuantificar qué tan fuerte tendría que ser."
   ],
   "includes": [
-   "3 unidades interactivas (19 diapositivas animadas)",
+   "3 unidades interactivas (34 diapositivas animadas)",
    "Lectura con fórmulas y ejemplos en cada unidad",
    "3 prácticas con respuesta y 12 preguntas de cuestionario",
    "Simuladores interactivos (3) y cálculos animados"
@@ -2341,7 +2341,7 @@ window.EPI_COURSE_DETAILS = Object.assign(window.EPI_COURSE_DETAILS || {}, {
    "Planificar el análisis, interpretar con cautela y reportar."
   ],
   "includes": [
-   "3 unidades interactivas (15 diapositivas animadas)",
+   "3 unidades interactivas (30 diapositivas animadas)",
    "Lectura con fórmulas y ejemplos en cada unidad",
    "3 prácticas con respuesta y 12 preguntas de cuestionario",
    "Simuladores interactivos (1) y cálculos animados"
@@ -2442,7 +2442,7 @@ window.EPI_COURSE_DETAILS = Object.assign(window.EPI_COURSE_DETAILS || {}, {
    "Revisar el DAG, probar con análisis de sensibilidad y reportar las limitaciones."
   ],
   "includes": [
-   "3 unidades interactivas (15 diapositivas animadas)",
+   "3 unidades interactivas (30 diapositivas animadas)",
    "Lectura con fórmulas y ejemplos en cada unidad",
    "3 prácticas con respuesta y 12 preguntas de cuestionario",
    "Simuladores interactivos (1) y cálculos animados"
@@ -2543,7 +2543,7 @@ window.EPI_COURSE_DETAILS = Object.assign(window.EPI_COURSE_DETAILS || {}, {
    "Calcular diferencias estandarizadas, interpretar el solapamiento y redactar los métodos."
   ],
   "includes": [
-   "3 unidades interactivas (18 diapositivas animadas)",
+   "3 unidades interactivas (33 diapositivas animadas)",
    "Lectura con fórmulas y ejemplos en cada unidad",
    "3 prácticas con respuesta y 12 preguntas de cuestionario",
    "Con plantillas para copiar, hojas de trabajo"
@@ -2644,7 +2644,7 @@ window.EPI_COURSE_DETAILS = Object.assign(window.EPI_COURSE_DETAILS || {}, {
    "Usar IPW para corregir pérdidas de seguimiento y entender los modelos estructurales marginales."
   ],
   "includes": [
-   "3 unidades interactivas (16 diapositivas animadas)",
+   "3 unidades interactivas (31 diapositivas animadas)",
    "Lectura con fórmulas y ejemplos en cada unidad",
    "3 prácticas con respuesta y 12 preguntas de cuestionario"
   ],
@@ -2744,7 +2744,7 @@ window.EPI_COURSE_DETAILS = Object.assign(window.EPI_COURSE_DETAILS || {}, {
    "Elegir el efecto a estimar, el método de análisis y reportar."
   ],
   "includes": [
-   "3 unidades interactivas (15 diapositivas animadas)",
+   "3 unidades interactivas (30 diapositivas animadas)",
    "Lectura con fórmulas y ejemplos en cada unidad",
    "3 prácticas con respuesta y 12 preguntas de cuestionario",
    "Con plantillas para copiar"
@@ -2845,7 +2845,7 @@ window.EPI_COURSE_DETAILS = Object.assign(window.EPI_COURSE_DETAILS || {}, {
    "Ponderar, comprobar el balance y estimar el efecto con errores estándar robustos."
   ],
   "includes": [
-   "3 unidades interactivas (15 diapositivas animadas)",
+   "3 unidades interactivas (30 diapositivas animadas)",
    "Lectura con fórmulas y ejemplos en cada unidad",
    "3 prácticas con respuesta y 12 preguntas de cuestionario",
    "Con plantillas para copiar"
@@ -2946,7 +2946,7 @@ window.EPI_COURSE_DETAILS = Object.assign(window.EPI_COURSE_DETAILS || {}, {
    "Definir estrategias de tratamiento sostenido, comparar métodos y reportar."
   ],
   "includes": [
-   "3 unidades interactivas (15 diapositivas animadas)",
+   "3 unidades interactivas (30 diapositivas animadas)",
    "Lectura con fórmulas y ejemplos en cada unidad",
    "3 prácticas con respuesta y 12 preguntas de cuestionario"
   ],
@@ -3046,7 +3046,7 @@ window.EPI_COURSE_DETAILS = Object.assign(window.EPI_COURSE_DETAILS || {}, {
    "Decidir si un resultado se aplica a un paciente concreto y documentar la lectura."
   ],
   "includes": [
-   "3 unidades interactivas (16 diapositivas animadas)",
+   "3 unidades interactivas (31 diapositivas animadas)",
    "Lectura con fórmulas y ejemplos en cada unidad",
    "3 prácticas con respuesta y 12 preguntas de cuestionario",
    "Con hojas de trabajo, listas de verificación"
@@ -3146,7 +3146,7 @@ window.EPI_COURSE_DETAILS = Object.assign(window.EPI_COURSE_DETAILS || {}, {
    "Cribar con dos revisores, medir la concordancia (kappa) y extraer datos con una hoja estandarizada."
   ],
   "includes": [
-   "3 unidades interactivas (18 diapositivas animadas)",
+   "3 unidades interactivas (33 diapositivas animadas)",
    "Lectura con fórmulas y ejemplos en cada unidad",
    "3 prácticas con respuesta y 12 preguntas de cuestionario",
    "Con plantillas para copiar, hojas de trabajo"
@@ -3246,7 +3246,7 @@ window.EPI_COURSE_DETAILS = Object.assign(window.EPI_COURSE_DETAILS || {}, {
    "Reconocer el sesgo de publicación, leer un gráfico de embudo y reportar según PRISMA 2020."
   ],
   "includes": [
-   "3 unidades interactivas (18 diapositivas animadas)",
+   "3 unidades interactivas (36 diapositivas animadas)",
    "Lectura con fórmulas y ejemplos en cada unidad",
    "4 prácticas con respuesta y 12 preguntas de cuestionario",
    "Simuladores interactivos (2) y cálculos animados",
@@ -3348,7 +3348,7 @@ window.EPI_COURSE_DETAILS = Object.assign(window.EPI_COURSE_DETAILS || {}, {
    "Evaluar el riesgo de sesgo de los estudios diagnósticos y reportar la revisión."
   ],
   "includes": [
-   "3 unidades interactivas (16 diapositivas animadas)",
+   "3 unidades interactivas (31 diapositivas animadas)",
    "Lectura con fórmulas y ejemplos en cada unidad",
    "3 prácticas con respuesta y 12 preguntas de cuestionario",
    "Simuladores interactivos (1) y cálculos animados",
@@ -3450,7 +3450,7 @@ window.EPI_COURSE_DETAILS = Object.assign(window.EPI_COURSE_DETAILS || {}, {
    "Definir los nodos, comprobar la transitividad y reportar según PRISMA-NMA."
   ],
   "includes": [
-   "3 unidades interactivas (16 diapositivas animadas)",
+   "3 unidades interactivas (31 diapositivas animadas)",
    "Lectura con fórmulas y ejemplos en cada unidad",
    "3 prácticas con respuesta y 12 preguntas de cuestionario"
   ],
@@ -3550,7 +3550,7 @@ window.EPI_COURSE_DETAILS = Object.assign(window.EPI_COURSE_DETAILS || {}, {
    "Elaborar la tabla de riesgo de sesgo, el gráfico de semáforo y usar los resultados en el meta-análisis y GRADE."
   ],
   "includes": [
-   "3 unidades interactivas (16 diapositivas animadas)",
+   "3 unidades interactivas (31 diapositivas animadas)",
    "Lectura con fórmulas y ejemplos en cada unidad",
    "3 prácticas con respuesta y 12 preguntas de cuestionario",
    "Simuladores interactivos (2) y cálculos animados",
@@ -3652,7 +3652,7 @@ window.EPI_COURSE_DETAILS = Object.assign(window.EPI_COURSE_DETAILS || {}, {
    "Elaborar la tabla de resultados y decidir cómo influye en la síntesis y en la certeza."
   ],
   "includes": [
-   "3 unidades interactivas (15 diapositivas animadas)",
+   "3 unidades interactivas (30 diapositivas animadas)",
    "Lectura con fórmulas y ejemplos en cada unidad",
    "3 prácticas con respuesta y 12 preguntas de cuestionario",
    "Simuladores interactivos (1) y cálculos animados",
@@ -3754,7 +3754,7 @@ window.EPI_COURSE_DETAILS = Object.assign(window.EPI_COURSE_DETAILS || {}, {
    "Usar la certeza junto con valores, recursos y factibilidad para formular recomendaciones."
   ],
   "includes": [
-   "3 unidades interactivas (16 diapositivas animadas)",
+   "3 unidades interactivas (31 diapositivas animadas)",
    "Lectura con fórmulas y ejemplos en cada unidad",
    "3 prácticas con respuesta y 12 preguntas de cuestionario",
    "Simuladores interactivos (1) y cálculos animados",
@@ -3856,7 +3856,7 @@ window.EPI_COURSE_DETAILS = Object.assign(window.EPI_COURSE_DETAILS || {}, {
    "Redactar recomendaciones claras, con su fuerza y certeza, y declaraciones de buena práctica."
   ],
   "includes": [
-   "3 unidades interactivas (16 diapositivas animadas)",
+   "3 unidades interactivas (31 diapositivas animadas)",
    "Lectura con fórmulas y ejemplos en cada unidad",
    "3 prácticas con respuesta y 12 preguntas de cuestionario",
    "Con plantillas para copiar"
@@ -3956,7 +3956,7 @@ window.EPI_COURSE_DETAILS = Object.assign(window.EPI_COURSE_DETAILS || {}, {
    "Planificar la implementación, medir su efecto y mantener la guía al día."
   ],
   "includes": [
-   "3 unidades interactivas (16 diapositivas animadas)",
+   "3 unidades interactivas (31 diapositivas animadas)",
    "Lectura con fórmulas y ejemplos en cada unidad",
    "3 prácticas con respuesta y 12 preguntas de cuestionario",
    "Con listas de verificación"
@@ -4056,7 +4056,7 @@ window.EPI_COURSE_DETAILS = Object.assign(window.EPI_COURSE_DETAILS || {}, {
    "Escribir el plan de análisis, el manejo de datos y armar el documento completo."
   ],
   "includes": [
-   "3 unidades interactivas (19 diapositivas animadas)",
+   "3 unidades interactivas (34 diapositivas animadas)",
    "Lectura con fórmulas y ejemplos en cada unidad",
    "3 prácticas con respuesta y 12 preguntas de cuestionario",
    "Simuladores interactivos (1) y cálculos animados",
@@ -4157,7 +4157,7 @@ window.EPI_COURSE_DETAILS = Object.assign(window.EPI_COURSE_DETAILS || {}, {
    "Escribir una discusión útil, formular el mensaje principal y elegir dónde enviarlo."
   ],
   "includes": [
-   "3 unidades interactivas (15 diapositivas animadas)",
+   "3 unidades interactivas (30 diapositivas animadas)",
    "Lectura con fórmulas y ejemplos en cada unidad",
    "3 prácticas con respuesta y 12 preguntas de cuestionario",
    "Con hojas de trabajo, listas de verificación"
@@ -4257,7 +4257,7 @@ window.EPI_COURSE_DETAILS = Object.assign(window.EPI_COURSE_DETAILS || {}, {
    "Escribir un resumen estructurado, elegir revista y responder a los revisores."
   ],
   "includes": [
-   "3 unidades interactivas (17 diapositivas animadas)",
+   "3 unidades interactivas (32 diapositivas animadas)",
    "Lectura con fórmulas y ejemplos en cada unidad",
    "3 prácticas con respuesta y 12 preguntas de cuestionario",
    "Con plantillas para copiar, hojas de trabajo, listas de verificación"
@@ -4357,7 +4357,7 @@ window.EPI_COURSE_DETAILS = Object.assign(window.EPI_COURSE_DETAILS || {}, {
    "Instalar Zotero, guardar referencias, organizar el cribado y citar en el procesador de textos."
   ],
   "includes": [
-   "3 unidades interactivas (15 diapositivas animadas)",
+   "3 unidades interactivas (30 diapositivas animadas)",
    "Lectura con fórmulas y ejemplos en cada unidad",
    "3 prácticas con respuesta y 12 preguntas de cuestionario",
    "Con plantillas para copiar, hojas de trabajo"
@@ -4457,7 +4457,7 @@ window.EPI_COURSE_DETAILS = Object.assign(window.EPI_COURSE_DETAILS || {}, {
    "Compartir datos y código de forma responsable, con principios FAIR y protección de la privacidad."
   ],
   "includes": [
-   "3 unidades interactivas (15 diapositivas animadas)",
+   "3 unidades interactivas (30 diapositivas animadas)",
    "Lectura con fórmulas y ejemplos en cada unidad",
    "3 prácticas con respuesta y 12 preguntas de cuestionario",
    "Con listas de verificación"
