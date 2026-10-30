@@ -1212,7 +1212,7 @@ window.EPI_COURSE_DETAILS = Object.assign(window.EPI_COURSE_DETAILS || {}, {
  "c13": {
   "format": "A tu ritmo · aula virtual",
   "language": "Español",
-  "summary": "Describir datos, comparar grupos y entender la incertidumbre, con cálculos animados desde lo más sencillo.",
+  "summary": "De cero a las pruebas de hipótesis: describir, estimar con incertidumbre, comparar medias y proporciones, pruebas por rangos, correlación, elegir la prueba y reportar.",
   "audience": [
    "Investigadores y clínicos que analizan sus propias bases de datos"
   ],
@@ -1221,15 +1221,21 @@ window.EPI_COURSE_DETAILS = Object.assign(window.EPI_COURSE_DETAILS || {}, {
   ],
   "outcomes": [
    "Elegir el resumen adecuado según el tipo de variable y calcular media, mediana y desviación estándar paso a paso.",
-   "Entender qué mide la prueba t y la prueba χ² y cómo se calculan, con ejemplos animados.",
-   "Medir la fuerza de una relación lineal y comparar grupos con rangos cuando los datos no son normales."
+   "Entender por qué una muestra nunca da el valor exacto, cuánto se equivoca (error estándar) y cómo expresarlo con un intervalo de confianza.",
+   "Entender los cinco pasos de toda prueba de hipótesis: hipótesis nula, valor p, nivel de significación, errores y decisión.",
+   "Comparar medias entre dos grupos independientes, en los mismos pacientes antes y después, y entre tres o más grupos.",
+   "Comparar variables de categorías entre grupos independientes (χ², Fisher) y en los mismos pacientes (McNemar).",
+   "Comparar grupos usando el orden de los datos cuando las medias no son apropiadas.",
+   "Medir la fuerza de una relación con Pearson y Spearman, interpretar r y reconocer la influencia de los valores extremos.",
+   "Usar un árbol de decisión para elegir la prueba según tipo de variable, número de grupos, datos pareados y supuestos.",
+   "Evitar falsas alarmas por pruebas múltiples, distinguir significación de importancia y redactar los resultados correctamente."
   ],
   "includes": [
-   "3 unidades interactivas (49 diapositivas animadas)",
+   "9 unidades interactivas (153 diapositivas animadas)",
    "Lectura con fórmulas y ejemplos en cada unidad",
-   "4 prácticas con respuesta y 12 preguntas de cuestionario",
-   "Simuladores interactivos (8) y cálculos animados",
-   "Con hojas de trabajo"
+   "18 prácticas con respuesta y 36 preguntas de cuestionario",
+   "Simuladores interactivos (16) y cálculos animados",
+   "Con hojas de trabajo, listas de verificación"
   ],
   "modules": [
    {
@@ -1255,19 +1261,19 @@ window.EPI_COURSE_DETAILS = Object.assign(window.EPI_COURSE_DETAILS || {}, {
     ]
    },
    {
-    "t": "Unidad 2 · Comparar grupos: prueba t y chi-cuadrado",
+    "t": "Unidad 2 · De la muestra a la población: error estándar e intervalo de confianza",
     "items": [
      {
-      "t": "Comparar grupos: prueba t y chi-cuadrado",
+      "t": "De la muestra a la población: error estándar e intervalo de confianza",
       "k": "diapositivas",
-      "m": 45
+      "m": 40
      },
      {
       "t": "Lectura de la unidad",
       "k": "lectura"
      },
      {
-      "t": "1 práctica(s) con respuesta",
+      "t": "2 práctica(s) con respuesta",
       "k": "practica"
      },
      {
@@ -1277,10 +1283,98 @@ window.EPI_COURSE_DETAILS = Object.assign(window.EPI_COURSE_DETAILS || {}, {
     ]
    },
    {
-    "t": "Unidad 3 · Relaciones entre variables: correlación y pruebas no paramétricas",
+    "t": "Unidad 3 · La lógica de una prueba de hipótesis",
     "items": [
      {
-      "t": "Relaciones entre variables: correlación y pruebas no paramétricas",
+      "t": "La lógica de una prueba de hipótesis",
+      "k": "diapositivas",
+      "m": 45
+     },
+     {
+      "t": "Lectura de la unidad",
+      "k": "lectura"
+     },
+     {
+      "t": "2 práctica(s) con respuesta",
+      "k": "practica"
+     },
+     {
+      "t": "Cuestionario de 4 preguntas",
+      "k": "quiz"
+     }
+    ]
+   },
+   {
+    "t": "Unidad 4 · Comparar medias: t de Welch, t pareada y ANOVA",
+    "items": [
+     {
+      "t": "Comparar medias: t de Welch, t pareada y ANOVA",
+      "k": "diapositivas",
+      "m": 50
+     },
+     {
+      "t": "Lectura de la unidad",
+      "k": "lectura"
+     },
+     {
+      "t": "2 práctica(s) con respuesta",
+      "k": "practica"
+     },
+     {
+      "t": "Cuestionario de 4 preguntas",
+      "k": "quiz"
+     }
+    ]
+   },
+   {
+    "t": "Unidad 5 · Comparar proporciones: χ², Fisher y McNemar",
+    "items": [
+     {
+      "t": "Comparar proporciones: χ², Fisher y McNemar",
+      "k": "diapositivas",
+      "m": 45
+     },
+     {
+      "t": "Lectura de la unidad",
+      "k": "lectura"
+     },
+     {
+      "t": "2 práctica(s) con respuesta",
+      "k": "practica"
+     },
+     {
+      "t": "Cuestionario de 4 preguntas",
+      "k": "quiz"
+     }
+    ]
+   },
+   {
+    "t": "Unidad 6 · Pruebas por rangos: Mann-Whitney, Wilcoxon y Kruskal-Wallis",
+    "items": [
+     {
+      "t": "Pruebas por rangos: Mann-Whitney, Wilcoxon y Kruskal-Wallis",
+      "k": "diapositivas",
+      "m": 45
+     },
+     {
+      "t": "Lectura de la unidad",
+      "k": "lectura"
+     },
+     {
+      "t": "2 práctica(s) con respuesta",
+      "k": "practica"
+     },
+     {
+      "t": "Cuestionario de 4 preguntas",
+      "k": "quiz"
+     }
+    ]
+   },
+   {
+    "t": "Unidad 7 · Relación entre dos variables numéricas: correlación",
+    "items": [
+     {
+      "t": "Relación entre dos variables numéricas: correlación",
       "k": "diapositivas",
       "m": 40
      },
@@ -1289,7 +1383,51 @@ window.EPI_COURSE_DETAILS = Object.assign(window.EPI_COURSE_DETAILS || {}, {
       "k": "lectura"
      },
      {
-      "t": "1 práctica(s) con respuesta",
+      "t": "2 práctica(s) con respuesta",
+      "k": "practica"
+     },
+     {
+      "t": "Cuestionario de 4 preguntas",
+      "k": "quiz"
+     }
+    ]
+   },
+   {
+    "t": "Unidad 8 · Elegir la prueba correcta y revisar los supuestos",
+    "items": [
+     {
+      "t": "Elegir la prueba correcta y revisar los supuestos",
+      "k": "diapositivas",
+      "m": 50
+     },
+     {
+      "t": "Lectura de la unidad",
+      "k": "lectura"
+     },
+     {
+      "t": "2 práctica(s) con respuesta",
+      "k": "practica"
+     },
+     {
+      "t": "Cuestionario de 4 preguntas",
+      "k": "quiz"
+     }
+    ]
+   },
+   {
+    "t": "Unidad 9 · Muchas pruebas, tamaño del efecto y cómo reportar",
+    "items": [
+     {
+      "t": "Muchas pruebas, tamaño del efecto y cómo reportar",
+      "k": "diapositivas",
+      "m": 45
+     },
+     {
+      "t": "Lectura de la unidad",
+      "k": "lectura"
+     },
+     {
+      "t": "2 práctica(s) con respuesta",
       "k": "practica"
      },
      {

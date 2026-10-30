@@ -135,7 +135,7 @@ window.EPI_COURSES = [
   "route": "epi-data",
   "title": "Estadística para investigadores clínicos",
   "level": "Básico",
-  "desc": "Descripción, inferencia, intervalos de confianza y valores p con criterio clínico.",
+  "desc": "De cero a las pruebas de hipótesis: t, χ², ANOVA, pruebas por rangos y correlación, con animaciones y criterio clínico.",
   "date": "",
   "duration": "",
   "status": "proximo"
