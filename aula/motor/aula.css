@@ -327,3 +327,8 @@ svg.ch .nw{animation:rise .6s ease both}
 .paso .ocurre .ot{display:block;color:var(--leaf);text-transform:uppercase;letter-spacing:.05em;font-weight:800;font-size:max(11px,1.25cqw);margin-bottom:.3cqw}
 .paso .pnota{margin:0;color:var(--muted);font-size:max(12px,1.45cqw)}
 @media (max-width:700px){.paso{grid-template-columns:1fr}}
+
+/* v6 · modo tema (dentro del reproductor de la academia): sin cabecera ni pestañas */
+html.tema .top,html.tema .ut,html.tema .lead{display:none}
+html.tema .shell{padding-top:12px}
+html.tema body{background:#fff}

@@ -4,6 +4,9 @@
   'use strict';
   var U = window.UNIDAD, W = window.EPI_W || {}, root = document.getElementById('app');
   if (!U || !root) return;
+  var T = window.TEMA; // modo tema (academia): solo se muestra un fragmento de la unidad y se avisa a la página contenedora al terminarlo
+  if (T) { U = Object.assign({}, U, { base: U.id, id: U.id + '.t' + T.n }); if (T.tipo === 'slides') U.slides = U.slides.slice(T.a, T.b + 1); document.documentElement.classList.add('tema'); }
+  var hechoTema = 0; function hecho() { if (T && !hechoTema) { hechoTema = 1; try { parent.postMessage({ epi: 'tema', u: U.base, n: T.n }, '*'); } catch (e) { } } }
   try { document.documentElement.setAttribute('data-area', String(U.area || '').toLowerCase().replace(/^epi-/, '').replace(/[^a-z]/g, '')); } catch (e) { }
   function $(s, r) { return (r || document).querySelector(s); }
   function el(tag, cls, html) { var e = document.createElement(tag); if (cls) e.className = cls; if (html != null) e.innerHTML = html; return e; }
@@ -27,8 +30,8 @@
   function tab(t) {
     [].forEach.call(document.querySelectorAll('.tabs button'), function (b) { b.setAttribute('aria-selected', b.dataset.t === t); });
     ['slides', 'lectura', 'practica', 'quiz'].forEach(function (k) { $('#p-' + k).hidden = k !== t; });
-    if (t === 'lectura') { st.leida = 1; save(); progreso(); }
-    try { history.replaceState(null, '', '#' + t); } catch (e) { }
+    if (t === 'lectura') { st.leida = 1; save(); progreso(); if (T && T.tipo === 'lectura') setTimeout(hecho, 8000); }
+    if (!T) try { history.replaceState(null, '', '#' + t); } catch (e) { }
   }
   $('.tabs').addEventListener('click', function (e) { if (e.target.dataset.t) tab(e.target.dataset.t); });
 
@@ -119,8 +122,9 @@
     [].forEach.call(dots.children, function (d, k) { d.setAttribute('aria-current', k === cur); d.classList.toggle('seen', st.vistas.indexOf(k) > -1); });
     var nt = $('#nt'); nt.style.display = s.n ? '' : 'none'; $('p', nt).textContent = s.n || ''; etiqueta();
     if (st.vistas.indexOf(cur) < 0) { st.vistas.push(cur); save(); progreso(); }
+    if (T && T.tipo === 'slides' && cur === nS - 1 && !frs.length) hecho();
   }
-  function adelante() { if (rev < frs.length) { frs[rev++].classList.add('on'); etiqueta(); } else if (cur < nS - 1) show(cur + 1); }
+  function adelante() { if (rev < frs.length) { frs[rev++].classList.add('on'); etiqueta(); if (T && T.tipo === 'slides' && cur === nS - 1 && rev >= frs.length) hecho(); } else if (cur < nS - 1) show(cur + 1); }
   function atras() { if (rev > 0) { frs[--rev].classList.remove('on'); etiqueta(); } else if (cur > 0) show(cur - 1, true); }
   $('#prev').onclick = atras; $('#next').onclick = adelante;
   dots.addEventListener('click', function (e) { if (e.target.dataset.i != null) show(+e.target.dataset.i); });
@@ -142,7 +146,7 @@
     if (t.w) { var h = el('div'); c.appendChild(h); (W[t.w] || function () { })(h, t.cfg || {}); }
     if (t.r) c.insertAdjacentHTML('beforeend', '<details><summary>Ver respuesta modelo</summary><div style="margin-top:8px">' + t.r + '</div></details>');
     var b = el('button', 'btn ghost', st.practica.indexOf(i) > -1 ? 'Hecha ✓' : 'Marcar como hecha'); b.type = 'button'; b.style.justifySelf = 'start';
-    b.onclick = function () { var k = st.practica.indexOf(i); if (k > -1) st.practica.splice(k, 1); else st.practica.push(i); b.textContent = st.practica.indexOf(i) > -1 ? 'Hecha ✓' : 'Marcar como hecha'; save(); progreso(); };
+    b.onclick = function () { var k = st.practica.indexOf(i); if (k > -1) st.practica.splice(k, 1); else st.practica.push(i); b.textContent = st.practica.indexOf(i) > -1 ? 'Hecha ✓' : 'Marcar como hecha'; save(); progreso(); if (T && T.tipo === 'practica' && st.practica.length >= nP) hecho(); };
     c.appendChild(b); pr.appendChild(c); renderTex(c);
   });
 
@@ -158,11 +162,11 @@
         $('.why', blk).innerHTML = (v === q.a ? '<b>Correcto.</b> ' : '<b>Revisa.</b> ') + q.why;
       });
       var pct = Math.round(100 * ok / U.quiz.length); $('#sc').textContent = resp < U.quiz.length ? 'Faltan ' + (U.quiz.length - resp) + ' por responder. Aciertos hasta ahora: ' + ok + '.' : 'Resultado: ' + ok + ' de ' + U.quiz.length + ' (' + pct + ' %)' + (pct >= 70 ? '. Unidad aprobada.' : '. Revisa las explicaciones y vuelve a intentarlo.');
-      if (resp === U.quiz.length) { st.quiz = { pct: Math.max(pct, (st.quiz && st.quiz.pct) || 0) }; save(); progreso(); }
+      if (resp === U.quiz.length) { st.quiz = { pct: Math.max(pct, (st.quiz && st.quiz.pct) || 0) }; save(); progreso(); if (T && T.tipo === 'quiz') hecho(); }
     };
   }
   quiz();
 
   /* ── arranque ── */
-  var h = (location.hash || '').slice(1); tab(['slides', 'lectura', 'practica', 'quiz'].indexOf(h) > -1 ? h : 'slides'); show(0); progreso();
+  var h = T ? (T.tipo === 'slides' ? 'slides' : T.tipo) : (location.hash || '').slice(1); tab(['slides', 'lectura', 'practica', 'quiz'].indexOf(h) > -1 ? h : 'slides'); show(0); progreso();
 })();
