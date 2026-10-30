@@ -97,7 +97,7 @@ window.EPI_COURSE_DETAILS = Object.assign(window.EPI_COURSE_DETAILS || {}, {
    ],
    [
     "¿Puedo probarlo antes?",
-    "Sí: la primera unidad de cada curso está disponible gratis como unidad de muestra."
+    "Sí: por ahora todas las unidades están abiertas y gratuitas en el aula abierta de EPI-LAB."
    ]
   ]
  },
@@ -198,7 +198,7 @@ window.EPI_COURSE_DETAILS = Object.assign(window.EPI_COURSE_DETAILS || {}, {
    ],
    [
     "¿Puedo probarlo antes?",
-    "Sí: la primera unidad de cada curso está disponible gratis como unidad de muestra."
+    "Sí: por ahora todas las unidades están abiertas y gratuitas en el aula abierta de EPI-LAB."
    ]
   ]
  },
@@ -299,7 +299,7 @@ window.EPI_COURSE_DETAILS = Object.assign(window.EPI_COURSE_DETAILS || {}, {
    ],
    [
     "¿Puedo probarlo antes?",
-    "Sí: la primera unidad de cada curso está disponible gratis como unidad de muestra."
+    "Sí: por ahora todas las unidades están abiertas y gratuitas en el aula abierta de EPI-LAB."
    ]
   ]
  },
@@ -399,7 +399,7 @@ window.EPI_COURSE_DETAILS = Object.assign(window.EPI_COURSE_DETAILS || {}, {
    ],
    [
     "¿Puedo probarlo antes?",
-    "Sí: la primera unidad de cada curso está disponible gratis como unidad de muestra."
+    "Sí: por ahora todas las unidades están abiertas y gratuitas en el aula abierta de EPI-LAB."
    ]
   ]
  },
@@ -500,7 +500,7 @@ window.EPI_COURSE_DETAILS = Object.assign(window.EPI_COURSE_DETAILS || {}, {
    ],
    [
     "¿Puedo probarlo antes?",
-    "Sí: la primera unidad de cada curso está disponible gratis como unidad de muestra."
+    "Sí: por ahora todas las unidades están abiertas y gratuitas en el aula abierta de EPI-LAB."
    ]
   ]
  },
@@ -601,7 +601,7 @@ window.EPI_COURSE_DETAILS = Object.assign(window.EPI_COURSE_DETAILS || {}, {
    ],
    [
     "¿Puedo probarlo antes?",
-    "Sí: la primera unidad de cada curso está disponible gratis como unidad de muestra."
+    "Sí: por ahora todas las unidades están abiertas y gratuitas en el aula abierta de EPI-LAB."
    ]
   ]
  },
@@ -701,7 +701,7 @@ window.EPI_COURSE_DETAILS = Object.assign(window.EPI_COURSE_DETAILS || {}, {
    ],
    [
     "¿Puedo probarlo antes?",
-    "Sí: la primera unidad de cada curso está disponible gratis como unidad de muestra."
+    "Sí: por ahora todas las unidades están abiertas y gratuitas en el aula abierta de EPI-LAB."
    ]
   ]
  },
@@ -802,7 +802,7 @@ window.EPI_COURSE_DETAILS = Object.assign(window.EPI_COURSE_DETAILS || {}, {
    ],
    [
     "¿Puedo probarlo antes?",
-    "Sí: la primera unidad de cada curso está disponible gratis como unidad de muestra."
+    "Sí: por ahora todas las unidades están abiertas y gratuitas en el aula abierta de EPI-LAB."
    ]
   ]
  },
@@ -903,7 +903,7 @@ window.EPI_COURSE_DETAILS = Object.assign(window.EPI_COURSE_DETAILS || {}, {
    ],
    [
     "¿Puedo probarlo antes?",
-    "Sí: la primera unidad de cada curso está disponible gratis como unidad de muestra."
+    "Sí: por ahora todas las unidades están abiertas y gratuitas en el aula abierta de EPI-LAB."
    ]
   ]
  },
@@ -1004,7 +1004,7 @@ window.EPI_COURSE_DETAILS = Object.assign(window.EPI_COURSE_DETAILS || {}, {
    ],
    [
     "¿Puedo probarlo antes?",
-    "Sí: la primera unidad de cada curso está disponible gratis como unidad de muestra."
+    "Sí: por ahora todas las unidades están abiertas y gratuitas en el aula abierta de EPI-LAB."
    ]
   ],
   "tool": "epi-predic"
@@ -1105,7 +1105,7 @@ window.EPI_COURSE_DETAILS = Object.assign(window.EPI_COURSE_DETAILS || {}, {
    ],
    [
     "¿Puedo probarlo antes?",
-    "Sí: la primera unidad de cada curso está disponible gratis como unidad de muestra."
+    "Sí: por ahora todas las unidades están abiertas y gratuitas en el aula abierta de EPI-LAB."
    ]
   ]
  },
@@ -1205,7 +1205,7 @@ window.EPI_COURSE_DETAILS = Object.assign(window.EPI_COURSE_DETAILS || {}, {
    ],
    [
     "¿Puedo probarlo antes?",
-    "Sí: la primera unidad de cada curso está disponible gratis como unidad de muestra."
+    "Sí: por ahora todas las unidades están abiertas y gratuitas en el aula abierta de EPI-LAB."
    ]
   ]
  },
@@ -1444,7 +1444,7 @@ window.EPI_COURSE_DETAILS = Object.assign(window.EPI_COURSE_DETAILS || {}, {
    ],
    [
     "¿Puedo probarlo antes?",
-    "Sí: la primera unidad de cada curso está disponible gratis como unidad de muestra."
+    "Sí: por ahora todas las unidades están abiertas y gratuitas en el aula abierta de EPI-LAB."
    ]
   ],
   "tool": "epi-data"
@@ -1545,7 +1545,7 @@ window.EPI_COURSE_DETAILS = Object.assign(window.EPI_COURSE_DETAILS || {}, {
    ],
    [
     "¿Puedo probarlo antes?",
-    "Sí: la primera unidad de cada curso está disponible gratis como unidad de muestra."
+    "Sí: por ahora todas las unidades están abiertas y gratuitas en el aula abierta de EPI-LAB."
    ]
   ],
   "tool": "epi-data"
@@ -1647,7 +1647,7 @@ window.EPI_COURSE_DETAILS = Object.assign(window.EPI_COURSE_DETAILS || {}, {
    ],
    [
     "¿Puedo probarlo antes?",
-    "Sí: la primera unidad de cada curso está disponible gratis como unidad de muestra."
+    "Sí: por ahora todas las unidades están abiertas y gratuitas en el aula abierta de EPI-LAB."
    ]
   ],
   "tool": "epi-data"
@@ -1749,7 +1749,7 @@ window.EPI_COURSE_DETAILS = Object.assign(window.EPI_COURSE_DETAILS || {}, {
    ],
    [
     "¿Puedo probarlo antes?",
-    "Sí: la primera unidad de cada curso está disponible gratis como unidad de muestra."
+    "Sí: por ahora todas las unidades están abiertas y gratuitas en el aula abierta de EPI-LAB."
    ]
   ],
   "tool": "epi-data"
@@ -1850,7 +1850,7 @@ window.EPI_COURSE_DETAILS = Object.assign(window.EPI_COURSE_DETAILS || {}, {
    ],
    [
     "¿Puedo probarlo antes?",
-    "Sí: la primera unidad de cada curso está disponible gratis como unidad de muestra."
+    "Sí: por ahora todas las unidades están abiertas y gratuitas en el aula abierta de EPI-LAB."
    ]
   ],
   "tool": "epi-data"
@@ -1951,7 +1951,7 @@ window.EPI_COURSE_DETAILS = Object.assign(window.EPI_COURSE_DETAILS || {}, {
    ],
    [
     "¿Puedo probarlo antes?",
-    "Sí: la primera unidad de cada curso está disponible gratis como unidad de muestra."
+    "Sí: por ahora todas las unidades están abiertas y gratuitas en el aula abierta de EPI-LAB."
    ]
   ],
   "tool": "epi-data"
@@ -2052,7 +2052,7 @@ window.EPI_COURSE_DETAILS = Object.assign(window.EPI_COURSE_DETAILS || {}, {
    ],
    [
     "¿Puedo probarlo antes?",
-    "Sí: la primera unidad de cada curso está disponible gratis como unidad de muestra."
+    "Sí: por ahora todas las unidades están abiertas y gratuitas en el aula abierta de EPI-LAB."
    ]
   ],
   "tool": "epi-data"
@@ -2154,7 +2154,7 @@ window.EPI_COURSE_DETAILS = Object.assign(window.EPI_COURSE_DETAILS || {}, {
    ],
    [
     "¿Puedo probarlo antes?",
-    "Sí: la primera unidad de cada curso está disponible gratis como unidad de muestra."
+    "Sí: por ahora todas las unidades están abiertas y gratuitas en el aula abierta de EPI-LAB."
    ]
   ],
   "tool": "epi-data"
@@ -2255,7 +2255,7 @@ window.EPI_COURSE_DETAILS = Object.assign(window.EPI_COURSE_DETAILS || {}, {
    ],
    [
     "¿Puedo probarlo antes?",
-    "Sí: la primera unidad de cada curso está disponible gratis como unidad de muestra."
+    "Sí: por ahora todas las unidades están abiertas y gratuitas en el aula abierta de EPI-LAB."
    ]
   ],
   "tool": "epi-data"
@@ -2357,7 +2357,7 @@ window.EPI_COURSE_DETAILS = Object.assign(window.EPI_COURSE_DETAILS || {}, {
    ],
    [
     "¿Puedo probarlo antes?",
-    "Sí: la primera unidad de cada curso está disponible gratis como unidad de muestra."
+    "Sí: por ahora todas las unidades están abiertas y gratuitas en el aula abierta de EPI-LAB."
    ]
   ],
   "tool": "epi-causal"
@@ -2458,7 +2458,7 @@ window.EPI_COURSE_DETAILS = Object.assign(window.EPI_COURSE_DETAILS || {}, {
    ],
    [
     "¿Puedo probarlo antes?",
-    "Sí: la primera unidad de cada curso está disponible gratis como unidad de muestra."
+    "Sí: por ahora todas las unidades están abiertas y gratuitas en el aula abierta de EPI-LAB."
    ]
   ],
   "tool": "epi-causal"
@@ -2559,7 +2559,7 @@ window.EPI_COURSE_DETAILS = Object.assign(window.EPI_COURSE_DETAILS || {}, {
    ],
    [
     "¿Puedo probarlo antes?",
-    "Sí: la primera unidad de cada curso está disponible gratis como unidad de muestra."
+    "Sí: por ahora todas las unidades están abiertas y gratuitas en el aula abierta de EPI-LAB."
    ]
   ],
   "tool": "epi-causal"
@@ -2660,7 +2660,7 @@ window.EPI_COURSE_DETAILS = Object.assign(window.EPI_COURSE_DETAILS || {}, {
    ],
    [
     "¿Puedo probarlo antes?",
-    "Sí: la primera unidad de cada curso está disponible gratis como unidad de muestra."
+    "Sí: por ahora todas las unidades están abiertas y gratuitas en el aula abierta de EPI-LAB."
    ]
   ],
   "tool": "epi-causal"
@@ -2761,7 +2761,7 @@ window.EPI_COURSE_DETAILS = Object.assign(window.EPI_COURSE_DETAILS || {}, {
    ],
    [
     "¿Puedo probarlo antes?",
-    "Sí: la primera unidad de cada curso está disponible gratis como unidad de muestra."
+    "Sí: por ahora todas las unidades están abiertas y gratuitas en el aula abierta de EPI-LAB."
    ]
   ],
   "tool": "epi-causal"
@@ -2861,7 +2861,7 @@ window.EPI_COURSE_DETAILS = Object.assign(window.EPI_COURSE_DETAILS || {}, {
    ],
    [
     "¿Puedo probarlo antes?",
-    "Sí: la primera unidad de cada curso está disponible gratis como unidad de muestra."
+    "Sí: por ahora todas las unidades están abiertas y gratuitas en el aula abierta de EPI-LAB."
    ]
   ],
   "tool": "epi-causal"
@@ -2962,7 +2962,7 @@ window.EPI_COURSE_DETAILS = Object.assign(window.EPI_COURSE_DETAILS || {}, {
    ],
    [
     "¿Puedo probarlo antes?",
-    "Sí: la primera unidad de cada curso está disponible gratis como unidad de muestra."
+    "Sí: por ahora todas las unidades están abiertas y gratuitas en el aula abierta de EPI-LAB."
    ]
   ],
   "tool": "epi-causal"
@@ -3063,7 +3063,7 @@ window.EPI_COURSE_DETAILS = Object.assign(window.EPI_COURSE_DETAILS || {}, {
    ],
    [
     "¿Puedo probarlo antes?",
-    "Sí: la primera unidad de cada curso está disponible gratis como unidad de muestra."
+    "Sí: por ahora todas las unidades están abiertas y gratuitas en el aula abierta de EPI-LAB."
    ]
   ],
   "tool": "epi-causal"
@@ -3163,7 +3163,7 @@ window.EPI_COURSE_DETAILS = Object.assign(window.EPI_COURSE_DETAILS || {}, {
    ],
    [
     "¿Puedo probarlo antes?",
-    "Sí: la primera unidad de cada curso está disponible gratis como unidad de muestra."
+    "Sí: por ahora todas las unidades están abiertas y gratuitas en el aula abierta de EPI-LAB."
    ]
   ],
   "tool": "epi-causal"
@@ -3264,7 +3264,7 @@ window.EPI_COURSE_DETAILS = Object.assign(window.EPI_COURSE_DETAILS || {}, {
    ],
    [
     "¿Puedo probarlo antes?",
-    "Sí: la primera unidad de cada curso está disponible gratis como unidad de muestra."
+    "Sí: por ahora todas las unidades están abiertas y gratuitas en el aula abierta de EPI-LAB."
    ]
   ]
  },
@@ -3364,7 +3364,7 @@ window.EPI_COURSE_DETAILS = Object.assign(window.EPI_COURSE_DETAILS || {}, {
    ],
    [
     "¿Puedo probarlo antes?",
-    "Sí: la primera unidad de cada curso está disponible gratis como unidad de muestra."
+    "Sí: por ahora todas las unidades están abiertas y gratuitas en el aula abierta de EPI-LAB."
    ]
   ]
  },
@@ -3465,7 +3465,7 @@ window.EPI_COURSE_DETAILS = Object.assign(window.EPI_COURSE_DETAILS || {}, {
    ],
    [
     "¿Puedo probarlo antes?",
-    "Sí: la primera unidad de cada curso está disponible gratis como unidad de muestra."
+    "Sí: por ahora todas las unidades están abiertas y gratuitas en el aula abierta de EPI-LAB."
    ]
   ],
   "tool": "epi-graphics"
@@ -3567,7 +3567,7 @@ window.EPI_COURSE_DETAILS = Object.assign(window.EPI_COURSE_DETAILS || {}, {
    ],
    [
     "¿Puedo probarlo antes?",
-    "Sí: la primera unidad de cada curso está disponible gratis como unidad de muestra."
+    "Sí: por ahora todas las unidades están abiertas y gratuitas en el aula abierta de EPI-LAB."
    ]
   ],
   "tool": "epi-graphics"
@@ -3667,7 +3667,7 @@ window.EPI_COURSE_DETAILS = Object.assign(window.EPI_COURSE_DETAILS || {}, {
    ],
    [
     "¿Puedo probarlo antes?",
-    "Sí: la primera unidad de cada curso está disponible gratis como unidad de muestra."
+    "Sí: por ahora todas las unidades están abiertas y gratuitas en el aula abierta de EPI-LAB."
    ]
   ],
   "tool": "meta-grade"
@@ -3769,7 +3769,7 @@ window.EPI_COURSE_DETAILS = Object.assign(window.EPI_COURSE_DETAILS || {}, {
    ],
    [
     "¿Puedo probarlo antes?",
-    "Sí: la primera unidad de cada curso está disponible gratis como unidad de muestra."
+    "Sí: por ahora todas las unidades están abiertas y gratuitas en el aula abierta de EPI-LAB."
    ]
   ],
   "tool": "epi-rob"
@@ -3871,7 +3871,7 @@ window.EPI_COURSE_DETAILS = Object.assign(window.EPI_COURSE_DETAILS || {}, {
    ],
    [
     "¿Puedo probarlo antes?",
-    "Sí: la primera unidad de cada curso está disponible gratis como unidad de muestra."
+    "Sí: por ahora todas las unidades están abiertas y gratuitas en el aula abierta de EPI-LAB."
    ]
   ],
   "tool": "epi-rob"
@@ -3973,7 +3973,7 @@ window.EPI_COURSE_DETAILS = Object.assign(window.EPI_COURSE_DETAILS || {}, {
    ],
    [
     "¿Puedo probarlo antes?",
-    "Sí: la primera unidad de cada curso está disponible gratis como unidad de muestra."
+    "Sí: por ahora todas las unidades están abiertas y gratuitas en el aula abierta de EPI-LAB."
    ]
   ],
   "tool": "meta-grade"
@@ -4074,7 +4074,7 @@ window.EPI_COURSE_DETAILS = Object.assign(window.EPI_COURSE_DETAILS || {}, {
    ],
    [
     "¿Puedo probarlo antes?",
-    "Sí: la primera unidad de cada curso está disponible gratis como unidad de muestra."
+    "Sí: por ahora todas las unidades están abiertas y gratuitas en el aula abierta de EPI-LAB."
    ]
   ]
  },
@@ -4174,7 +4174,7 @@ window.EPI_COURSE_DETAILS = Object.assign(window.EPI_COURSE_DETAILS || {}, {
    ],
    [
     "¿Puedo probarlo antes?",
-    "Sí: la primera unidad de cada curso está disponible gratis como unidad de muestra."
+    "Sí: por ahora todas las unidades están abiertas y gratuitas en el aula abierta de EPI-LAB."
    ]
   ]
  },
@@ -4275,7 +4275,7 @@ window.EPI_COURSE_DETAILS = Object.assign(window.EPI_COURSE_DETAILS || {}, {
    ],
    [
     "¿Puedo probarlo antes?",
-    "Sí: la primera unidad de cada curso está disponible gratis como unidad de muestra."
+    "Sí: por ahora todas las unidades están abiertas y gratuitas en el aula abierta de EPI-LAB."
    ]
   ]
  },
@@ -4375,7 +4375,7 @@ window.EPI_COURSE_DETAILS = Object.assign(window.EPI_COURSE_DETAILS || {}, {
    ],
    [
     "¿Puedo probarlo antes?",
-    "Sí: la primera unidad de cada curso está disponible gratis como unidad de muestra."
+    "Sí: por ahora todas las unidades están abiertas y gratuitas en el aula abierta de EPI-LAB."
    ]
   ]
  },
@@ -4475,7 +4475,7 @@ window.EPI_COURSE_DETAILS = Object.assign(window.EPI_COURSE_DETAILS || {}, {
    ],
    [
     "¿Puedo probarlo antes?",
-    "Sí: la primera unidad de cada curso está disponible gratis como unidad de muestra."
+    "Sí: por ahora todas las unidades están abiertas y gratuitas en el aula abierta de EPI-LAB."
    ]
   ]
  },
@@ -4575,7 +4575,7 @@ window.EPI_COURSE_DETAILS = Object.assign(window.EPI_COURSE_DETAILS || {}, {
    ],
    [
     "¿Puedo probarlo antes?",
-    "Sí: la primera unidad de cada curso está disponible gratis como unidad de muestra."
+    "Sí: por ahora todas las unidades están abiertas y gratuitas en el aula abierta de EPI-LAB."
    ]
   ]
  },
@@ -4675,7 +4675,7 @@ window.EPI_COURSE_DETAILS = Object.assign(window.EPI_COURSE_DETAILS || {}, {
    ],
    [
     "¿Puedo probarlo antes?",
-    "Sí: la primera unidad de cada curso está disponible gratis como unidad de muestra."
+    "Sí: por ahora todas las unidades están abiertas y gratuitas en el aula abierta de EPI-LAB."
    ]
   ]
  }

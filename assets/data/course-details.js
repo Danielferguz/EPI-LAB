@@ -142,7 +142,7 @@ window.EPI_COURSE_DETAILS = {
    ["¿Necesito saber programar?", "No. Todo el análisis se hace con EPI-DATA, sin código."],
    ["¿Mis datos salen de mi computador?", "No. EPI-DATA calcula en tu navegador; los datos no se envían a ningún servidor."],
    ["¿Los ejemplos son datos reales?", "Son datos simulados de nefrología creados para enseñar."],
-   ["¿Quién narra los videos?", "Una voz sintética, para mantener una calidad constante entre lecciones."]
+   ["¿Quién imparte los videos?", "Los graba el autor del curso, con las diapositivas y ejemplos de cada unidad."]
   ]
  }
 };

@@ -74,7 +74,7 @@
   var cont = document.getElementById('continue');
   if (cont) {
     var p = 0; try { p = +localStorage.getItem('epi-aula-p:c1-u2') || 0; } catch (e) { }
-    cont.innerHTML = '<div class="eyebrow">' + (p ? 'Continúa donde quedaste' : 'Prueba antes de inscribirte') + '</div><h3>Medidas de asociación y de efecto</h3><p>Unidad gratuita con calculadora 2×2, lectura, práctica y cuestionario. Sin registro.</p><div class="meter" aria-label="Progreso"><i style="width:' + p + '%"></i></div><a class="btn btn-primary" href="' + ROOT + 'muestra/index.html">' + (p ? 'Seguir (' + p + ' %)' : 'Probar una unidad gratis') + '</a>';
+    cont.innerHTML = '<div class="eyebrow">' + (p ? 'Continúa donde quedaste' : 'Prueba antes de inscribirte') + '</div><h3>Todos los cursos, en el aula</h3><p>Aula abierta: todas las unidades con simuladores, lectura, práctica y cuestionario. Sin registro.</p><div class="meter" aria-label="Progreso"><i style="width:' + p + '%"></i></div><a class="btn btn-primary" href="' + ROOT + 'muestra/index.html">' + (p ? 'Seguir (' + p + ' %)' : 'Abrir el aula gratis') + '</a>';
   }
 
   // Botón flotante: WhatsApp si hay número, si no, contacto
