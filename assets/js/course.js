@@ -9,7 +9,7 @@
   var d = det[id], link = E.checkout && E.checkout[id], tool = d && E.tools && E.tools[d.tool];
   document.title = c.title + ' · EPI-LAB';
   var md = document.querySelector('meta[name=description]'); if (md) md.content = d ? d.summary : c.desc;
-  var K = { video: 'Video', lectura: 'Lectura', herramienta: 'Taller', quiz: 'Cuestionario' };
+  var K = { video: 'Video', diapositivas: 'Diapositivas', lectura: 'Lectura', practica: 'Práctica', herramienta: 'Taller', quiz: 'Cuestionario' };
   var h = '<section class="title-block"><div class="wrap"><div class="eyebrow" style="justify-content:center">' + esc(c.route.toUpperCase()) + ' · ' + esc(c.level) + '</div><h1 style="font-size:clamp(1.9rem,4vw,3rem)">' + esc(c.title) + '</h1></div></section>';
   h += '<section class="section" style="padding-top:20px"><div class="wrap course-grid"><div>';
   h += '<p class="lead">' + esc(d ? d.summary : c.desc) + '</p>';
@@ -31,6 +31,7 @@
   h += '<div class="price">' + money(P.course) + '</div>';
   if (d) h += '<ul>' + d.includes.map(function (x) { return '<li>' + esc(x) + '</li>'; }).join('') + '</ul>';
   h += link ? '<a class="btn btn-primary" href="' + esc(link) + '" target="_blank" rel="noopener">Inscribirme</a>' : '<a class="btn btn-primary" href="contacto.html?tema=' + encodeURIComponent(c.title) + '">Avísame cuando abra</a>';
+  var mu = (window.EPI_MUESTRAS || {})[id]; if (mu) h += '<a class="btn btn-ghost" href="' + esc(mu) + '">Probar una unidad gratis</a>';
   if (d && d.brochure) h += '<a class="btn btn-ghost" href="' + esc(d.brochure) + '">Descargar ficha (PDF)</a>';
   h += '<a class="btn btn-ghost" href="precios.html">Ver precios y planes</a>';
   if (d) h += '<p style="font-size:.85rem;color:var(--muted);margin:14px 0 0">' + esc(d.format) + ' · ' + esc(d.language) + (d.videoMin ? ' · ≈ ' + d.videoMin + ' min de video' : '') + '. ' + (tool ? '<a href="' + esc(tool) + '" target="_blank" rel="noopener">Abrir ' + esc(d.tool.toUpperCase()) + '</a>' : 'Herramienta disponible desde el aula.') + '</p>';
