@@ -1,0 +1,200 @@
+---
+title: "EPI-DATA en R: un ejemplo por tipo de análisis"
+subtitle: "Tabla 1, datos perdidos, lineal, logística, Poisson robusta, conteos, supervivencia y longitudinal"
+lang: es
+format:
+  html:
+    toc: true
+    toc-depth: 2
+    code-tools: true
+    embed-resources: true
+    tabsets: true
+execute:
+  echo: true
+  warning: false
+  message: false
+  fig-width: 7
+  fig-height: 4.5
+---
+
+## 0. Preparación
+
+Cada sección indica **en qué pestaña de EPI-DATA haces lo mismo** y **qué valor debe salir**. Los datos son los ejemplos de EPI-DATA (simulados).
+
+```{r}
+if (!requireNamespace("pacman", quietly = TRUE)) install.packages("pacman")
+pacman::p_load(tidyverse, gtsummary, broom, sandwich, lmtest, performance, mice, survival, lme4, geepack, MASS, modelsummary, ggview)
+set.seed(2024)
+# ggview::canvas() fija el tamaño de la figura mientras la exploras en RStudio (ggview()); al compilar el informe se ignora y mandan fig-width y fig-height
+canvas <- function(...) if (isTRUE(getOption("knitr.in.progress"))) NULL else ggview::canvas(...)
+select <- dplyr::select
+```
+
+```{r}
+# «Datos» → ejemplo «Hemodiálisis · depresión» (260 filas × 13 columnas)
+d <- read_csv("hemodialisis_depresion.csv", na = c("", "NA"), show_col_types = FALSE)
+dim(d)
+d <- d |>
+  rename(edad = `Edad`, sexo = Sexo, diabetes = Diabetes, apoyo = `Apoyo familiar`, hb = `Hemoglobina (g/dL)`, alb = `Albúmina (g/dL)`,
+         phq9 = `Puntaje PHQ-9`, depresion = `Depresión`) |>
+  mutate(dep = as.integer(depresion == "Sí"), diabetes = factor(diabetes, levels = c("No", "Sí")))
+```
+
+## 1. Tabla 1 y datos perdidos
+
+::: {.panel-tabset}
+
+### Tabla 1 (pestaña «Descriptivo»)
+
+```{r}
+d |> select(diabetes, edad, sexo, apoyo, hb, alb, phq9, depresion) |>
+  tbl_summary(by = diabetes, missing_text = "(perdidos)", statistic = list(all_continuous() ~ "{mean} ({sd})")) |>
+  add_overall() |> add_p() |> bold_labels()        # EPI-DATA: edad 59,1 ± 14,5 (p = 0,720); hemoglobina p = 0,437
+```
+
+### Datos perdidos (pestaña «Datos perdidos»)
+
+```{r}
+#| fig-cap: "Porcentaje de datos perdidos por variable"
+perd <- d |> summarise(across(everything(), \(x) 100 * mean(is.na(x)))) |> pivot_longer(everything(), names_to = "variable", values_to = "pct") |> filter(pct > 0)
+perd
+ggplot(perd, aes(reorder(variable, pct), pct)) + geom_col(fill = "#C9801A", width = 0.6) + coord_flip() +
+  labs(x = NULL, y = "% perdido") + theme_minimal(base_size = 13) + canvas(6, 3)
+vars <- c("depresion", "diabetes", "edad", "sexo", "apoyo", "hb", "alb")
+sum(complete.cases(d[, vars]))        # casos completos del modelo: 223 (EPI-DATA: «n analizado 223 de 260»)
+```
+
+:::
+
+## 2. Imputación múltiple (mice)
+
+```{r}
+# «Resultados» → imputación múltiple. Se imputan los perdidos m veces, se ajusta el modelo en cada base y se combinan (reglas de Rubin)
+dm <- d |> select(dep, diabetes, edad, sexo, apoyo, hb, alb) |> mutate(across(where(is.character), factor))
+imp <- mice(dm, m = 20, printFlag = FALSE, seed = 2024)
+fit_imp <- with(imp, glm(dep ~ diabetes + edad + sexo + apoyo + hb + alb, family = binomial))
+tidy(pool(fit_imp), exponentiate = TRUE, conf.int = TRUE) |> filter(term == "diabetesSí") |> mutate(across(where(is.numeric), \(x) round(x, 2)))
+```
+
+```{r}
+# Comparación con casos completos (EPI-DATA: «comparar también con casos completos»)
+cc <- glm(dep ~ diabetes + edad + sexo + apoyo + hb + alb, data = dm, family = binomial)
+tidy(cc, exponentiate = TRUE, conf.int = TRUE) |> filter(term == "diabetesSí") |> mutate(across(where(is.numeric), \(x) round(x, 2)))   # OR 1,98 (1,02 a 3,89 con IC por verosimilitud; 3,87 con Wald, como EPI-DATA)
+```
+
+## 3. Modelos de regresión
+
+::: {.panel-tabset}
+
+### Lineal (PHQ-9)
+
+```{r}
+#| fig-height: 7
+ml <- lm(phq9 ~ diabetes + edad + sexo + alb, data = d)
+coeftest(ml, vcov. = vcovHC(ml, type = "HC3"))     # errores robustos HC3 (EPI-DATA: «Regresión lineal»)
+check_model(ml, check = c("linearity", "normality", "homogeneity", "outliers"))   # supuestos (performance)
+```
+
+### Logística (OR)
+
+```{r}
+m_or <- glm(dep ~ diabetes + edad + sexo + apoyo + hb + alb, data = d, family = binomial)
+tidy(m_or, exponentiate = TRUE, conf.int = TRUE) |> filter(term == "diabetesSí") |> mutate(across(where(is.numeric), \(x) round(x, 3)))   # OR 1,98 (IC 95 % 1,02–3,89 por verosimilitud; 1,02–3,87 con Wald), p = 0,044
+```
+
+### Poisson con varianza robusta (RP)
+
+```{r}
+m_rp <- glm(dep ~ diabetes + edad + sexo + apoyo + hb + alb, data = d, family = poisson)
+ct <- coeftest(m_rp, vcov. = vcovHC(m_rp, type = "HC0"))["diabetesSí", ]
+round(c(RP = exp(ct[[1]]), inf = exp(ct[[1]] - 1.96 * ct[[2]]), sup = exp(ct[[1]] + 1.96 * ct[[2]]), p = ct[[4]]), 3)   # RP 1,43 (0,96–2,11), p = 0,076
+```
+
+### Comparar modelos (modelsummary)
+
+```{r}
+modelsummary(list("OR (logística)" = m_or, "RP (Poisson robusta)" = m_rp), exponentiate = TRUE, vcov = list("classical", "HC0"),
+             coef_map = c("diabetesSí" = "Diabetes (Sí vs No)"), statistic = "conf.int", gof_map = c("nobs"), output = "markdown")
+```
+
+:::
+
+## 4. Conteos y sobredispersión
+
+```{r}
+# «Pregunta y modelo» → Poisson (conteos) y binomial negativa; offset = tiempo de seguimiento
+u <- read_csv("erc_utilizacion.csv", na = c("", "NA"), show_col_types = FALSE) |>
+  rename(edad = Edad, sexo = Sexo, programa = `Programa de educación en ERC`, urg = `Consultas de urgencias`, seg = `Seguimiento (años)`) |>
+  mutate(programa = factor(programa, levels = c("No", "Sí")))
+table(u$urg)[1:6]                                      # distribución de los conteos
+pois <- glm(urg ~ programa + edad + sexo + offset(log(seg)), data = u, family = poisson)
+check_overdispersion(pois)                             # Pearson/gl >> 1 → sobredispersión: usar binomial negativa
+nb <- glm.nb(urg ~ programa + edad + sexo + offset(log(seg)), data = u)
+rbind(Poisson = AIC(pois), `Binomial negativa` = AIC(nb)) |> round(1)
+tidy(nb, exponentiate = TRUE, conf.int = TRUE) |> filter(term == "programaSí") |> mutate(across(where(is.numeric), \(x) round(x, 3)))   # razón de tasas
+```
+
+## 5. Supervivencia
+
+::: {.panel-tabset}
+
+### Kaplan-Meier y log-rank
+
+```{r}
+m2 <- read_csv("hemodialisis_mortalidad.csv", na = c("", "NA"), show_col_types = FALSE) |>
+  rename(acceso = `Acceso vascular`, edad = Edad, sexo = Sexo, diabetes = Diabetes, charlson = `Índice de Charlson`, alb = `Albúmina (g/dL)`,
+         tiempo = `Tiempo de seguimiento (meses)`, fallecido = Fallecido) |>
+  mutate(evento = as.integer(fallecido == "Sí"), acceso = relevel(factor(acceso), ref = "Fístula arteriovenosa")) |> drop_na(alb)
+km <- survfit(Surv(tiempo, evento) ~ acceso, data = m2)
+km                                   # EPI-DATA: mediana 27,8 meses con catéter
+survdiff(Surv(tiempo, evento) ~ acceso, data = m2)   # log-rank χ² = 16,6
+```
+
+```{r}
+#| fig-cap: "Kaplan-Meier"
+plot(km, col = c("#2E79C7", "#C9801A"), lwd = 2, xlab = "Meses", ylab = "Supervivencia", conf.int = FALSE)
+legend("bottomleft", c("Fístula", "Catéter"), col = c("#2E79C7", "#C9801A"), lwd = 2, bty = "n")
+```
+
+### Cox
+
+```{r}
+cx <- coxph(Surv(tiempo, evento) ~ acceso + edad + sexo + diabetes + charlson + alb, data = m2)
+tbl_regression(cx, exponentiate = TRUE)        # EPI-DATA: HR 2,23 (1,62–3,07) para catéter
+cox.zph(cx)                                    # riesgos proporcionales (Schoenfeld)
+```
+
+:::
+
+## 6. Datos longitudinales
+
+::: {.panel-tabset}
+
+### Modelo mixto (intercepto aleatorio)
+
+```{r}
+l <- read_csv("erc_tfge_longitudinal.csv", show_col_types = FALSE) |>
+  rename(id = ID, mes = Mes, trat = Tratamiento, tfge = `TFGe (mL/min/1.73 m²)`)
+mm <- lmer(tfge ~ mes * trat + (1 | id), data = l)
+round(summary(mm)$coefficients, 3)                     # la interacción mes × tratamiento es el efecto sobre la pendiente
+icc(mm)                                                # CCI: parte de la variabilidad que está entre pacientes (performance)
+```
+
+### GEE
+
+```{r}
+l <- arrange(l, id)
+gee <- geeglm(tfge ~ mes * trat, id = id, data = l, family = gaussian, corstr = "exchangeable")
+round(summary(gee)$coefficients, 3)
+```
+
+:::
+
+## Cómo reportar
+
+- **Tabla 1:** n (%) y media (DE) por grupo, n y datos perdidos; sin valores p en ensayos aleatorizados (CONSORT).
+- **Modelos:** estimación cruda y ajustada con IC 95 %, n analizado y eventos, covariables y su justificación, manejo de datos perdidos (casos completos o imputación múltiple, con *m*), software y versiones (`sessionInfo()`).
+
+```{r}
+sessionInfo()
+```

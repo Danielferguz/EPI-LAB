@@ -33,6 +33,7 @@
     var uc = ult && mis.filter(function (c) { return c.id === ult.c; })[0];
     var html = barra(a) + '<div class="wrap"><div class="hero"><div><h1>Tus cursos</h1><p>' + (a.modo === 'seguro' ? 'Cursos asignados a tu cuenta.' : 'Aula abierta: todos los cursos están disponibles por ahora.') + ' Avanza a tu ritmo: cada curso tiene unidades y cada unidad, varios temas con diapositivas animadas, lectura, práctica y cuestionario.</p></div><img src="motor/mascota/saludar.webp" alt=""></div>';
     if (uc) { var s0 = cursoStats(uc); html += '<div class="cont"><div><small>Continúa donde lo dejaste</small><b>' + esc(uc.t) + '</b> · ' + s0.pct + ' %</div><a class="btn" href="curso.html?c=' + uc.id + '&u=' + encodeURIComponent(ult.u) + '&n=' + ult.n + '">Continuar →</a></div>'; }
+    if ((CFG.recursos || []).length) html += '<details class="area" style="--a:#6F4FB8"><summary><h2>Material de apoyo</h2><span class="n">' + CFG.recursos.length + ' archivos</span></summary><p class="ad">Datos, plantillas de Quarto y código en R con sus resultados.</p><ul style="margin:0 0 24px;padding-left:20px;display:grid;gap:6px">' + CFG.recursos.map(function (r) { return '<li><a href="' + esc(r.href) + '"' + (/\.(qmd|zip)$/.test(r.href) ? ' download' : ' target="_blank" rel="noopener"') + '>' + esc(r.t) + '</a></li>'; }).join('') + '</ul></details>';
     html += '<div class="tools"><input id="q" type="search" placeholder="Buscar un curso o un tema…" aria-label="Buscar"></div><div id="lst"></div></div>';
     $('#app').innerHTML = html;
     function pintar(q) {

@@ -1,0 +1,136 @@
+---
+title: "EPI-PREDIC en R: desarrollar y validar un modelo de predicción clínica"
+subtitle: "Tamaño de muestra, desarrollo, validación interna y externa, calibración y curva de decisión"
+lang: es
+format:
+  html:
+    toc: true
+    toc-depth: 2
+    code-tools: true
+    embed-resources: true
+    tabsets: true
+execute:
+  echo: true
+  warning: false
+  message: false
+  fig-width: 7
+  fig-height: 4.5
+---
+
+## 0. Preparación
+
+Pregunta: **¿quién tendrá falla renal a 2 años?** Es el ejemplo «ERC · falla renal a 2 años» de EPI-PREDIC (datos simulados). Desarrollo: `erc_prediccion_desarrollo.csv`; validación externa: `erc_prediccion_validacion.csv` (otro centro).
+
+```{r}
+if (!requireNamespace("pacman", quietly = TRUE)) install.packages("pacman")
+pacman::p_load(tidyverse, rms, pROC, broom, performance, gtsummary, ggview)
+set.seed(2024)
+# ggview::canvas() fija el tamaño de la figura mientras la exploras en RStudio (ggview()); al compilar el informe se ignora y mandan fig-width y fig-height
+canvas <- function(...) if (isTRUE(getOption("knitr.in.progress"))) NULL else ggview::canvas(...)
+```
+
+```{r}
+ren <- function(x) x |> rename(edad = `Edad (años)`, sexo = Sexo, diab = Diabetes, tfge = `TFGe (mL/min/1.73 m²)`, uacr = `UACR (mg/g)`,
+                               hb = `Hemoglobina (g/dL)`, bic = `Bicarbonato (mmol/L)`, fosf = `Fosfato (mg/dL)`, falla = `Falla renal a 2 años`) |>
+  mutate(y = as.integer(falla == "Sí"), sexo = factor(sexo), diab = factor(diab))
+dev <- read_csv("erc_prediccion_desarrollo.csv", na = c("", "NA"), show_col_types = FALSE) |> ren()
+val <- read_csv("erc_prediccion_validacion.csv", na = c("", "NA"), show_col_types = FALSE) |> ren()
+c(desarrollo = nrow(dev), validacion = nrow(val))
+```
+
+## 1. Tamaño de muestra (pestaña «Tamaño de muestra»)
+
+```{r}
+# Criterio 1 de Riley et al. (2020): contracción global esperada S >= 0,9 con p parámetros candidatos y R² de Cox-Snell esperado
+riley1 <- function(p, r2cs, S = 0.9) ceiling(p / ((S - 1) * log(1 - r2cs / S)))
+n1 <- riley1(p = 15, r2cs = 0.20)      # EPI-PREDIC: 597 participantes
+prev <- 0.20                           # prevalencia/incidencia esperada del desenlace
+c(participantes = n1, eventos = round(n1 * prev), `eventos por parámetro` = round(n1 * prev / 15, 1))   # EPI-PREDIC: 597, 119 y 8,0
+```
+
+## 2. Desarrollo del modelo
+
+::: {.panel-tabset}
+
+### Ajuste (rms::lrm)
+
+```{r}
+dd <- datadist(dev); options(datadist = "dd")
+cc <- dev |> drop_na(y, edad, sexo, diab, tfge, uacr, hb, bic, fosf)
+c(pacientes = nrow(cc), eventos = sum(cc$y))              # EPI-PREDIC: 1393 pacientes y 228 eventos
+fit <- lrm(y ~ edad + sexo + diab + rcs(tfge, 4) + log(uacr) + hb + bic + fosf, data = cc, x = TRUE, y = TRUE)
+fit
+anova(fit)                                                 # la fila «Nonlinear» de TFGe: no linealidad (EPI-PREDIC p = 0,011)
+```
+
+### Ecuación del modelo
+
+```{r}
+# Los coeficientes definen la ecuación de predicción. NO se interpretan como efectos causales («falacia de la Tabla 2»)
+tidy(glm(y ~ edad + sexo + diab + splines::ns(tfge, 3) + log(uacr) + hb + bic + fosf, data = cc, family = binomial), exponentiate = TRUE, conf.int = TRUE) |>
+  mutate(across(where(is.numeric), \(x) round(x, 3))) |> head(8)
+```
+
+:::
+
+## 3. Validación interna (bootstrap)
+
+```{r}
+v <- validate(fit, B = 200)         # optimismo del bootstrap: 200 réplicas (EPI-PREDIC: «validación interna con bootstrap»)
+v[c("Dxy", "R2", "Slope", "B"), ]
+c_aparente <- 0.5 + v["Dxy", "index.orig"] / 2; c_corregido <- 0.5 + v["Dxy", "index.corrected"] / 2
+c(`C aparente` = c_aparente, `C corregido por optimismo` = c_corregido, `factor de contracción` = v["Slope", "index.corrected"]) |> round(3)   # EPI-PREDIC: 0,953 (el bootstrap usa azar: 0,95–0,96)
+```
+
+```{r}
+#| fig-cap: "Calibración corregida por optimismo"
+cal <- calibrate(fit, B = 200)
+plot(cal, xlab = "Riesgo predicho", ylab = "Riesgo observado", subtitles = FALSE)
+```
+
+## 4. Validación externa (pestaña «Validación»)
+
+```{r}
+# El modelo ya ajustado se aplica SIN reajustarlo a pacientes de otro centro
+v2 <- val |> drop_na(y, edad, sexo, diab, tfge, uacr, hb, bic, fosf) |> as.data.frame()   # rms::predict() pide un data.frame (no un tibble)
+v2$lp <- predict(fit, newdata = v2, type = "lp"); v2$p <- plogis(v2$lp)
+cal_fit <- glm(y ~ lp, data = v2, family = binomial)                        # pendiente de calibración
+citl <- coef(glm(y ~ offset(lp), data = v2, family = binomial))[1]         # calibración en lo grande
+auc <- pROC::auc(pROC::roc(v2$y, v2$p, quiet = TRUE)); ci <- pROC::ci.auc(auc)
+tibble(n = nrow(v2), eventos = sum(v2$y), AUC = as.numeric(auc), `AUC inf` = ci[1], `AUC sup` = ci[3],
+       `pendiente de calibración` = coef(cal_fit)[2], CITL = citl, `O/E` = sum(v2$y) / sum(v2$p)) |>
+  mutate(across(where(is.numeric), \(x) round(x, 3)))
+```
+
+```{r}
+#| fig-cap: "Calibración en la base de validación"
+v2 |> mutate(g = ntile(p, 10)) |> group_by(g) |> summarise(pred = mean(p), obs = mean(y)) |>
+  ggplot(aes(pred, obs)) + geom_abline(linetype = "dashed") + geom_line(colour = "#C9801A") + geom_point(size = 3, colour = "#2E79C7") +
+  coord_equal(xlim = c(0, 1), ylim = c(0, 1)) + labs(x = "Riesgo predicho (decil)", y = "Riesgo observado") + theme_minimal(base_size = 13) + canvas(5, 5)
+```
+
+**Cómo leerlo:** pendiente < 1 = predicciones demasiado extremas; CITL ≠ 0 u O/E ≠ 1 = riesgo medio mal estimado; si no calibra, **recalibra antes de usar el modelo** en el nuevo centro.
+
+## 5. Utilidad clínica: curva de decisión (pestaña «Utilidad clínica»)
+
+```{r}
+#| fig-cap: "Beneficio neto"
+bn <- function(y, p, pt) { n <- length(y); tp <- sum(p >= pt & y == 1); fp <- sum(p >= pt & y == 0); tp / n - fp / n * pt / (1 - pt) }
+cc$p <- plogis(predict(fit, type = "lp"))
+pts <- seq(0.05, 0.5, 0.01)
+curva <- tibble(pt = pts, Modelo = map_dbl(pts, \(t) bn(cc$y, cc$p, t)), `Tratar a todos` = map_dbl(pts, \(t) mean(cc$y) - (1 - mean(cc$y)) * t / (1 - t)), `No tratar` = 0) |>
+  pivot_longer(-pt, names_to = "estrategia", values_to = "beneficio")
+ggplot(curva, aes(pt, beneficio, colour = estrategia)) + geom_line(linewidth = 1) + coord_cartesian(ylim = c(-0.05, 0.2)) +
+  scale_colour_manual(values = c(Modelo = "#2E79C7", `Tratar a todos` = "#C9801A", `No tratar` = "grey40")) +
+  labs(x = "Umbral de riesgo", y = "Beneficio neto", colour = NULL) + theme_minimal(base_size = 13) + theme(legend.position = "top") + canvas(7, 4.2)
+c(`beneficio neto del modelo (pt = 0,15)` = bn(cc$y, cc$p, 0.15), `tratar a todos` = mean(cc$y) - (1 - mean(cc$y)) * 0.15 / 0.85) |> round(4)   # EPI-PREDIC: 0,0778 y 0,0161 (aparente)
+```
+
+## Cómo reportar (TRIPOD)
+
+- Tamaño de muestra justificado; predictores y **ecuación completa**; rendimiento **corregido por optimismo** (C y calibración con IC); validación externa con calibración; utilidad clínica; evaluación con PROBAST.
+- Cuida las diferencias entre este código y EPI-PREDIC: los números coinciden en el tamaño de muestra, el n, los eventos y la contracción; el bootstrap usa azar y puede variar en el último decimal.
+
+```{r}
+sessionInfo()
+```
