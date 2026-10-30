@@ -151,16 +151,6 @@ window.EPI_COURSES = [
   "status": "proximo"
  },
  {
-  "id": "c15",
-  "route": "epi-data",
-  "title": "Stata para investigación clínica",
-  "level": "Básico",
-  "desc": "Flujo de trabajo reproducible en Stata con do-files.",
-  "date": "",
-  "duration": "",
-  "status": "proximo"
- },
- {
   "id": "c16",
   "route": "epi-data",
   "title": "Regresión lineal",

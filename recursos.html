@@ -1,6 +1,8 @@
 <!doctype html>
 <html lang="es">
 <head>
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'sha256-pfgOMgfVZwm2ODyms34QYW9h8EwicylhV77q5LHK8c0='; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self'; connect-src 'self'; frame-src 'self' https://*.thinkific.com https://player.vimeo.com https://www.youtube-nocookie.com; object-src 'none'; base-uri 'self'; form-action 'self' mailto:">
+<meta name="referrer" content="strict-origin-when-cross-origin">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Recursos · EPI-LAB Tools & Cheatsheets</title>
@@ -51,7 +53,7 @@
 <button class="tab" role="tab" aria-selected="false" aria-controls="p-cv">OR → RR</button>
 </div>
 <div class="tabpanel" id="p-ss"><div class="calc">
-<form id="ss-form" onsubmit="return false"><div class="chipbar" style="margin-bottom:14px"><button type="button" class="tab on" data-ss="prop">Dos proporciones</button><button type="button" class="tab" data-ss="mean">Dos medias</button></div>
+<form id="ss-form"><div class="chipbar" style="margin-bottom:14px"><button type="button" class="tab on" data-ss="prop">Dos proporciones</button><button type="button" class="tab" data-ss="mean">Dos medias</button></div>
 <div class="fields">
 <div id="ss-prop" class="fields full"><label>Proporción grupo 1 (%)<input id="ss-p1" type="number" step="any" value="40"></label><label>Proporción grupo 2 (%)<input id="ss-p2" type="number" step="any" value="20"></label></div>
 <div id="ss-mean" class="fields full" hidden><label>Diferencia a detectar<input id="ss-delta" type="number" step="any" value="5"></label><label>Desviación estándar<input id="ss-sd" type="number" step="any" value="10"></label></div>
@@ -62,13 +64,13 @@
 </div></form>
 <div class="out" id="ss-out" aria-live="polite"></div></div></div>
 <div class="tabpanel" id="p-as" hidden><div class="calc">
-<form id="as-form" onsubmit="return false"><div class="fields">
+<form id="as-form"><div class="fields">
 <label>Expuestos con evento<input id="as-a" type="number" min="0" value="40"></label><label>Expuestos sin evento<input id="as-b" type="number" min="0" value="60"></label>
 <label>No expuestos con evento<input id="as-c" type="number" min="0" value="20"></label><label>No expuestos sin evento<input id="as-d" type="number" min="0" value="80"></label>
 </div><p style="color:var(--muted);font-size:.9rem;margin-top:14px">Intervalos de confianza al 95 % por el método logarítmico (RR, OR) y de Wald (diferencia de riesgos).</p></form>
 <div class="out" id="as-out" aria-live="polite"></div></div></div>
 <div class="tabpanel" id="p-cv" hidden><div class="calc">
-<form id="cv-form" onsubmit="return false"><div class="fields">
+<form id="cv-form"><div class="fields">
 <label>Odds ratio (OR)<input id="cv-or" type="number" step="any" min="0" value="2.67"></label><label>Riesgo basal en no expuestos (%)<input id="cv-p0" type="number" step="any" value="20"></label>
 </div><p style="color:var(--muted);font-size:.9rem;margin-top:14px">Útil para reinterpretar un OR de regresión logística cuando el desenlace es común. Lee <a href="blog/or-vs-rr.html">por qué un OR no es un RR</a>.</p></form>
 <div class="out" id="cv-out" aria-live="polite"></div></div></div>

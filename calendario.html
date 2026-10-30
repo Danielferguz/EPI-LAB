@@ -1,6 +1,8 @@
 <!doctype html>
 <html lang="es">
 <head>
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'sha256-pfgOMgfVZwm2ODyms34QYW9h8EwicylhV77q5LHK8c0='; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self'; connect-src 'self'; frame-src 'self' https://*.thinkific.com https://player.vimeo.com https://www.youtube-nocookie.com; object-src 'none'; base-uri 'self'; form-action 'self' mailto:">
+<meta name="referrer" content="strict-origin-when-cross-origin">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Calendario · EPI-LAB</title>
@@ -39,7 +41,7 @@
 <section class="section" style="padding-top:48px"><div class="wrap"><div id="catalog" data-view="list" data-flat="1">
 <div class="tabs" role="group" aria-label="Áreas"><button class="tab on" data-route="all">Todas</button><button class="tab" data-route="epi-methods">EPI-METHODS</button><button class="tab" data-route="epi-data">EPI-DATA</button><button class="tab" data-route="epi-causal">EPI-CAUSAL</button><button class="tab" data-route="epi-evidence">EPI-EVIDENCE</button><button class="tab" data-route="epi-clinical">EPI-CLINICAL</button><button class="tab" data-route="epi-research">EPI-RESEARCH</button></div>
 <div class="toolbar">
-<div class="grow"><input id="cq" type="search" placeholder="Buscar curso… (ej. GRADE, Stata, DAG)" aria-label="Buscar curso"></div>
+<div class="grow"><input id="cq" type="search" placeholder="Buscar curso… (ej. GRADE, DAG, Poisson)" aria-label="Buscar curso"></div>
 <select id="clevel" aria-label="Nivel" style="min-width:160px"><option value="all">Todos los niveles</option><option>Básico</option><option>Intermedio</option><option>Avanzado</option></select>
 <div class="viewtog"><button data-view="cards">Tarjetas</button><button class="on" data-view="list">Lista</button></div>
 </div>

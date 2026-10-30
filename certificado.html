@@ -1,6 +1,8 @@
 <!doctype html>
 <html lang="es">
 <head>
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'sha256-pfgOMgfVZwm2ODyms34QYW9h8EwicylhV77q5LHK8c0='; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self'; connect-src 'self'; frame-src 'self' https://*.thinkific.com https://player.vimeo.com https://www.youtube-nocookie.com; object-src 'none'; base-uri 'self'; form-action 'self' mailto:">
+<meta name="referrer" content="strict-origin-when-cross-origin">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Certificado · EPI-LAB</title>
@@ -38,7 +40,7 @@
 <section class="page-hero"><div class="wrap"><div class="eyebrow">Certificado</div><h1>Verifica un certificado EPI-LAB.</h1><p class="lead">Ingresa el código que aparece en el certificado para comprobar su autenticidad.</p></div></section>
 <section class="section"><div class="wrap grid g2" style="gap:56px;align-items:start">
 <div class="card"><h3>Verificación</h3>
-<form id="verify-form" class="verify" onsubmit="return false"><input id="vcode" placeholder="Código (ej. EPI-2026-0001)" required aria-label="Código del certificado"><button class="btn btn-primary" type="submit">Verificar</button></form>
+<form id="verify-form" class="verify"><input id="vcode" placeholder="Código (ej. EPI-2026-0001)" required aria-label="Código del certificado"><button class="btn btn-primary" type="submit">Verificar</button></form>
 <div class="verify-out" id="verify-out" aria-live="polite"></div></div>
 <div><div class="eyebrow">Cómo se obtiene</div><h2>Del curso al certificado</h2>
 <ul class="case-flow" style="margin-bottom:18px"><li>Inscripción</li><li>Cursar</li><li>Cumplir requisitos</li><li>Certificado</li></ul>

@@ -145,3 +145,6 @@
     });
   }
 })();
+
+/* Formularios de calculadoras y de verificación: se resuelven en la página (antes lo hacía un onsubmit en línea, que la CSP bloquea). */
+document.addEventListener("submit", function (e) { if (e.target.matches && e.target.matches("#verify-form,#ss-form,#as-form,#cv-form")) e.preventDefault(); });
