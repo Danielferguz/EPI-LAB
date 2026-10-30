@@ -4830,12 +4830,19 @@ window.EPI_COURSE_DETAILS = Object.assign(window.EPI_COURSE_DETAILS || {}, {
   "outcomes": [
    "Cargar una base, revisar las variables, construir la Tabla 1 y evaluar los datos perdidos en EPI-DATA, con la interpretación y el reporte que piden las revistas.",
    "Configurar, ejecutar e interpretar una regresión logística y una de Poisson con varianza robusta en EPI-DATA, y reportarlas como lo piden las revistas.",
-   "Estimar curvas de Kaplan-Meier, comparar grupos y ajustar un modelo de Cox en EPI-DATA, interpretando el HR y reportando el análisis."
+   "Estimar curvas de Kaplan-Meier, comparar grupos y ajustar un modelo de Cox en EPI-DATA, interpretando el HR y reportando el análisis.",
+   "Estimar un efecto causal con datos observacionales en EPI-CAUSAL: pregunta, puntaje de propensión, métodos, balance y análisis de sensibilidad.",
+   "Elegir una plantilla, editar los datos, ajustar el formato y descargar figuras con la calidad que piden las revistas.",
+   "Evaluar el riesgo de sesgo de ensayos con RoB 2 en EPI-ROB, con semáforo, texto de métodos y archivos compatibles con robvis.",
+   "Cargar los datos de los estudios, hacer el metaanálisis, valorar la certeza con GRADE y generar la tabla Summary of Findings en metagrade.",
+   "Cargar una serie, definir la interrupción, ajustar la regresión segmentada, comparar con el contrafactual y reportar el efecto en EPI-ITS.",
+   "Definir una pregunta de predicción, comparar algoritmos con validación cruzada y leer el rendimiento y la interpretación en EPI-ML.",
+   "Calcular el tamaño de muestra, desarrollar un modelo de riesgo, validarlo, evaluar su utilidad clínica y reportarlo según TRIPOD en EPI-PREDIC."
   ],
   "includes": [
-   "3 unidades interactivas (59 diapositivas animadas)",
+   "10 unidades interactivas (190 diapositivas animadas)",
    "Lectura con fórmulas y ejemplos en cada unidad",
-   "6 prácticas con respuesta y 12 preguntas de cuestionario",
+   "20 prácticas con respuesta y 40 preguntas de cuestionario",
    "Con listas de verificación"
   ],
   "modules": [
@@ -4890,6 +4897,160 @@ window.EPI_COURSE_DETAILS = Object.assign(window.EPI_COURSE_DETAILS || {}, {
       "t": "EPI-DATA: supervivencia con Kaplan-Meier y Cox",
       "k": "diapositivas",
       "m": 50
+     },
+     {
+      "t": "Lectura de la unidad",
+      "k": "lectura"
+     },
+     {
+      "t": "2 práctica(s) con respuesta",
+      "k": "practica"
+     },
+     {
+      "t": "Cuestionario de 4 preguntas",
+      "k": "quiz"
+     }
+    ]
+   },
+   {
+    "t": "Taller 4 · EPI-CAUSAL: puntaje de propensión, ponderación y E-value",
+    "items": [
+     {
+      "t": "EPI-CAUSAL: puntaje de propensión, ponderación y E-value",
+      "k": "diapositivas",
+      "m": 55
+     },
+     {
+      "t": "Lectura de la unidad",
+      "k": "lectura"
+     },
+     {
+      "t": "2 práctica(s) con respuesta",
+      "k": "practica"
+     },
+     {
+      "t": "Cuestionario de 4 preguntas",
+      "k": "quiz"
+     }
+    ]
+   },
+   {
+    "t": "Taller 5 · EPI-GRAPHICS: una figura lista para la revista",
+    "items": [
+     {
+      "t": "EPI-GRAPHICS: una figura lista para la revista",
+      "k": "diapositivas",
+      "m": 35
+     },
+     {
+      "t": "Lectura de la unidad",
+      "k": "lectura"
+     },
+     {
+      "t": "2 práctica(s) con respuesta",
+      "k": "practica"
+     },
+     {
+      "t": "Cuestionario de 4 preguntas",
+      "k": "quiz"
+     }
+    ]
+   },
+   {
+    "t": "Taller 6 · EPI-ROB: evaluar el riesgo de sesgo con RoB 2",
+    "items": [
+     {
+      "t": "EPI-ROB: evaluar el riesgo de sesgo con RoB 2",
+      "k": "diapositivas",
+      "m": 45
+     },
+     {
+      "t": "Lectura de la unidad",
+      "k": "lectura"
+     },
+     {
+      "t": "2 práctica(s) con respuesta",
+      "k": "practica"
+     },
+     {
+      "t": "Cuestionario de 4 preguntas",
+      "k": "quiz"
+     }
+    ]
+   },
+   {
+    "t": "Taller 7 · metagrade: metaanálisis, certeza GRADE y tabla SoF",
+    "items": [
+     {
+      "t": "metagrade: metaanálisis, certeza GRADE y tabla SoF",
+      "k": "diapositivas",
+      "m": 55
+     },
+     {
+      "t": "Lectura de la unidad",
+      "k": "lectura"
+     },
+     {
+      "t": "2 práctica(s) con respuesta",
+      "k": "practica"
+     },
+     {
+      "t": "Cuestionario de 4 preguntas",
+      "k": "quiz"
+     }
+    ]
+   },
+   {
+    "t": "Taller 8 · EPI-ITS: series temporales interrumpidas",
+    "items": [
+     {
+      "t": "EPI-ITS: series temporales interrumpidas",
+      "k": "diapositivas",
+      "m": 50
+     },
+     {
+      "t": "Lectura de la unidad",
+      "k": "lectura"
+     },
+     {
+      "t": "2 práctica(s) con respuesta",
+      "k": "practica"
+     },
+     {
+      "t": "Cuestionario de 4 preguntas",
+      "k": "quiz"
+     }
+    ]
+   },
+   {
+    "t": "Taller 9 · EPI-ML: comparar algoritmos de aprendizaje automático",
+    "items": [
+     {
+      "t": "EPI-ML: comparar algoritmos de aprendizaje automático",
+      "k": "diapositivas",
+      "m": 55
+     },
+     {
+      "t": "Lectura de la unidad",
+      "k": "lectura"
+     },
+     {
+      "t": "2 práctica(s) con respuesta",
+      "k": "practica"
+     },
+     {
+      "t": "Cuestionario de 4 preguntas",
+      "k": "quiz"
+     }
+    ]
+   },
+   {
+    "t": "Taller 10 · EPI-PREDIC: desarrollar y validar un modelo de predicción clínica",
+    "items": [
+     {
+      "t": "EPI-PREDIC: desarrollar y validar un modelo de predicción clínica",
+      "k": "diapositivas",
+      "m": 60
      },
      {
       "t": "Lectura de la unidad",
