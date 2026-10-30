@@ -1,0 +1,9 @@
+DATOS DE EJEMPLO DE EPI-LAB (simulados, solo para enseñar)
+Son los mismos archivos que trae EPI-DATA en «Pruebe con una base de ejemplo».
+- hemodialisis_depresion.csv   transversal: depresión según diabetes (modelos logístico, Poisson robusta y lineal)
+- hemodialisis_mortalidad.csv  cohorte: Kaplan-Meier, log-rank y Cox
+- lesion_renal_aguda.csv       cohorte: Poisson robusta (RR) o logística (OR)
+- trasplante_injerto.csv, dialisis_peritonitis.csv, erc_*.csv, centros_dialisis.csv: otros diseños
+
+taller-epidata.qmd: plantilla de Quarto para talleres en vivo o grabados (ver el curso «R desde cero», unidad 9).
+En R, lee los archivos con read.csv("archivo.csv", check.names = FALSE, na.strings = c("", "NA")).

@@ -143,9 +143,9 @@ window.EPI_COURSES = [
  {
   "id": "c14",
   "route": "epi-data",
-  "title": "R desde cero",
+  "title": "R desde cero: reproduce tus análisis de EPI-DATA",
   "level": "Básico",
-  "desc": "Importar, limpiar, visualizar y analizar datos con R y RStudio.",
+  "desc": "R, RStudio y Quarto con salidas reales: importar, limpiar, describir, graficar, comparar, modelar, analizar supervivencia y reportar con los ejemplos de EPI-DATA.",
   "date": "",
   "duration": "",
   "status": "proximo"
@@ -456,6 +456,16 @@ window.EPI_COURSES = [
   "title": "Ética y ciencia abierta",
   "level": "Intermedio",
   "desc": "Ética de la investigación, registro de protocolos y datos abiertos.",
+  "date": "",
+  "duration": "",
+  "status": "proximo"
+ },
+ {
+  "id": "c47",
+  "route": "epi-data",
+  "title": "Talleres con las herramientas EPI",
+  "level": "Básico",
+  "desc": "Talleres paso a paso con capturas anotadas: qué pulsar en cada herramienta, qué ocurre, cómo interpretar la salida y cómo piden las revistas reportarla.",
   "date": "",
   "duration": "",
   "status": "proximo"

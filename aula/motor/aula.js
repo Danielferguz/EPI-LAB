@@ -36,6 +36,18 @@
   function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
   /* Fórmulas: $...$ (en línea) y $$...$$ (destacadas) con KaTeX si está cargado. */
   function kt(t, d) { var k = window.katex; if (!k) return '<code>' + esc(t) + '</code>'; try { return k.renderToString(t, { throwOnError: false, displayMode: !!d, strict: false }); } catch (e) { return esc(t); } }
+  function hlR(c) { // resaltado mínimo de R (comentarios, textos, números, funciones y operadores)
+    return String(c).replace(/(#.*$)|("[^"\n]*"|'[^'\n]*')|(\b\d+(?:\.\d+)?\b)|([A-Za-z_.][\w.]*)(?=\()|(<-|\|>|%>%|~)|([&<>])/gm, function (m, com, str, num, fn, op, ch) {
+      if (ch) return { '&': '&amp;', '<': '&lt;', '>': '&gt;' }[ch];
+      var k = com ? 'c' : str ? 's' : num ? 'n' : fn ? 'f' : 'o'; return '<i class="r' + k + '">' + esc(m) + '</i>';
+    });
+  }
+  document.addEventListener('click', function (e) {
+    var b = e.target.closest && e.target.closest('[data-copy]'); if (!b) return; var cb = b.closest('.cb'), t = cb ? cb.querySelector('code').textContent : '';
+    function listo() { var o = b.textContent; b.textContent = 'Copiado ✓'; setTimeout(function () { b.textContent = o; }, 1600); }
+    if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(t).then(listo, plan); else plan();
+    function plan() { var a = document.createElement('textarea'); a.value = t; document.body.appendChild(a); a.select(); try { document.execCommand('copy'); listo(); } catch (x) { } document.body.removeChild(a); }
+  });
   function mf(h) { return typeof h === 'string' && h.indexOf('$') > -1 ? h.replace(/\$\$([^$]+)\$\$/g, function (_, t) { return kt(t, true); }).replace(/\$([^$\n]+)\$/g, function (_, t) { return kt(t, false); }) : h; }
   function renderTex(box) { [].forEach.call(box.querySelectorAll('.tex'), function (n) { if (window.katex) { try { window.katex.render(n.getAttribute('data-t'), n, { throwOnError: false, displayMode: n.getAttribute('data-d') === '1', strict: false }); } catch (e) { } } }); }
   var CONSTRUIBLES = { points: 1, formula: 1, table: 1, twobox: 1, steps: 1, glosario: 1 };
@@ -48,17 +60,21 @@
     if (t === 'twobox') { var b = function (x) { return '<div class="' + fr.trim() + '"><h3>' + mf(x[0]) + '</h3>' + x.slice(1, -1).map(function (y) { return '<p>' + mf(y) + '</p>'; }).join('') + '<p class="big">' + mf(x[x.length - 1]) + '</p></div>'; }; return '<div class="tb">' + b(s.left) + b(s.right) + '</div>'; }
     if (t === 'callout') { var KL = { ejemplo: 'Ejemplo', interpreta: 'Cómo se interpreta', cuidado: 'Ojo con esto', idea: 'Idea clave', resumen: 'En resumen' }; return '<div class="co' + (s.kind ? ' k-' + s.kind : '') + '">' + (s.kind && KL[s.kind] ? '<span class="ck">' + KL[s.kind] + '</span>' : '') + '<div>' + mf(s.body) + '</div></div>'; }
     if (t === 'glosario') return '<div class="glos">' + s.items.map(function (i) { return '<div class="' + fr.trim() + '"><b>' + mf(i[0]) + '</b><span>' + mf(i[1]) + '</span>' + (i[2] ? '<em>' + mf(i[2]) + '</em>' : '') + '</div>'; }).join('') + '</div>';
+    if (t === 'paso') return '<div class="paso"><figure><img src="img/' + s.img + '" alt="' + esc(s.alt || s.title) + '" loading="lazy"></figure><div class="pc"><ol class="clics">' + s.clics.map(function (c) { return '<li><span>' + mf(c) + '</span></li>'; }).join('') + '</ol>' +
+      (s.ocurre ? '<div class="ocurre"><span class="ot">Qué ocurre</span>' + mf(s.ocurre) + '</div>' : '') + (s.nota ? '<p class="pnota">' + mf(s.nota) + '</p>' : '') + '</div></div>';
+    if (t === 'codigo') return '<div class="cod' + (s.img || s.out ? '' : ' solo') + '"><div class="cb"><div class="ch2"><span>' + esc(s.lang || 'R') + '</span><button type="button" class="cp" data-copy>Copiar código</button></div><pre><code>' + hlR(s.code) + '</code></pre></div>' +
+      (s.img ? '<div class="co2 im"><img src="img/' + s.img + '" alt="' + esc(s.cap || s.title) + '" loading="lazy"></div>' : s.out ? '<div class="co2"><div class="ch2"><span>Salida en tu consola</span></div><pre>' + esc(s.out) + '</pre></div>' : '') + '</div>' + (s.cap ? '<p class="codcap">' + mf(s.cap) + '</p>' : '');
     if (t === 'shot') return '<div class="shotw"><img src="img/' + s.img + '" alt="' + esc(s.cap || s.title) + '" loading="lazy"><p>' + (s.cap || '') + '</p></div>';
     if (t === 'steps') return '<div class="steps' + (s.items.length > 4 ? ' two' : '') + '">' + s.items.map(function (i) { return '<div class="' + fr.trim() + '"><div><b>' + mf(i[0]) + '</b><span>' + mf(i[1] || '') + '</span></div></div>'; }).join('') + '</div>';
     if (t === 'reveal') return '<div class="rv">' + s.items.map(function (i) { return '<details><summary>' + mf(i[0]) + '</summary><p>' + mf(i[1]) + '</p></details>'; }).join('') + '</div>';
     if (t === 'calc') return '<div class="calc">' + (s.given ? '<div class="given">' + mf(s.given) + '</div>' : '') + s.steps.map(function (p, i) { return '<div class="cs fr' + (p.res ? ' res' : '') + '"><span class="n">' + (i + 1) + '</span><div class="m">' + (p.tex ? kt(p.tex, true) : '') + '</div><div class="e">' + mf(p.say || '') + '</div></div>'; }).join('') + '</div>';
     return '';
   }
-  var LIBRES = { widget: 1, check: 1, calc: 1 };
+  var LIBRES = { widget: 1, check: 1, calc: 1, codigo: 1, paso: 1 };
   /* Mascota: cada tipo de aviso tiene su pose; solo se muestra si la diapositiva deja espacio libre abajo a la derecha. */
   var MB = (function () { var sc = document.currentScript; return sc && sc.src ? sc.src.replace(/[^\/]*$/, '') : ''; })(); // las imágenes de la mascota viven junto a aula.js
   var POSE = { 'callout:ejemplo': 'analista', 'callout:interpreta': 'senalar', 'callout:cuidado': 'detective', 'callout:idea': 'idea', 'callout:resumen': 'celebrando', 'callout': 'orgullosa',
-    'points:resumen': 'divulgadora', 'points:cuidado': 'preocupada', 'glosario': 'lectora', 'reveal': 'pensando', 'steps': 'determinada' };
+    'points:resumen': 'divulgadora', 'points:cuidado': 'preocupada', 'glosario': 'lectora', 'reveal': 'pensando', 'steps': 'determinada', 'codigo': 'notas', 'paso': 'guia' };
   var POSE_W = { centro: 'analista', dispersion: 'lectora', histograma: 'analista', valorp: 'pensando', sesgoazar: 'detective', arbolpruebas: 'guia', anova: 'analista', pareada: 'notas', rangos: 'exploradora' };
   function pose(s) { return s.m === 0 ? '' : (s.m || POSE[s.t + ':' + (s.kind || '')] || POSE[s.t] || ''); }
   function ajustaMascota(sl, nombre) {

@@ -1,0 +1,104 @@
+---
+title: "Taller EPI-DATA en R: depresión en hemodiálisis"
+author: "Tu nombre"
+date: today
+lang: es
+format:
+  html:
+    toc: true
+    code-fold: false
+    embed-resources: true
+  docx: default
+execute:
+  echo: true
+  warning: false
+  message: false
+---
+
+<!--
+  CÓMO USAR ESTA PLANTILLA EN UN TALLER EN VIVO O GRABADO
+  1. Guarda este archivo en la misma carpeta que hemodialisis_depresion.csv (o ajusta la ruta).
+  2. Abre el archivo en RStudio (o VS Code con la extensión de Quarto) y pulsa "Render".
+  3. En vivo: ejecuta cada bloque con Ctrl+Shift+Enter (Cmd+Shift+Enter en Mac) y comenta la salida.
+  4. Compara cada resultado con la pantalla de EPI-DATA: deben coincidir (se indica el valor esperado).
+  Paquetes: dplyr, tidyr, ggplot2, sandwich, lmtest, survival.
+-->
+
+## 1. Cargar y revisar la base
+
+En EPI-DATA: pestaña **Datos** → ejemplo «Hemodiálisis · depresión» (260 filas × 13 columnas).
+
+```{r}
+library(dplyr); library(tidyr); library(ggplot2)
+d <- read.csv("hemodialisis_depresion.csv", check.names = FALSE, na.strings = c("", "NA"))
+dim(d)   # esperado: 260 13
+names(d) <- c("id", "edad", "grupo_edad", "sexo", "diabetes", "acceso", "meses_hd",
+              "apoyo", "hb", "alb", "ktv", "phq9", "depresion")
+d <- d |> mutate(dep = as.integer(depresion == "Sí"), diabetes = factor(diabetes, levels = c("No", "Sí")))
+```
+
+Se analizaron `r nrow(d)` pacientes; la hemoglobina media fue `r round(mean(d$hb), 1)` g/dL.
+
+## 2. Datos perdidos
+
+En EPI-DATA: pestaña **Datos perdidos**.
+
+```{r}
+perdidos <- colSums(is.na(d))
+round(100 * perdidos[perdidos > 0] / nrow(d), 1)      # albúmina 10,4 %
+vars <- c("depresion", "diabetes", "edad", "sexo", "apoyo", "hb", "alb")
+sum(complete.cases(d[, vars]))                         # esperado: 223 (n analizado del modelo)
+```
+
+## 3. Tabla 1 por diabetes
+
+En EPI-DATA: pestaña **Descriptivo**, «Comparar según» Diabetes.
+
+```{r}
+d |>
+  group_by(diabetes) |>
+  summarise(n = n(), hb = sprintf("%.1f (%.1f)", mean(hb), sd(hb)),
+            depresion = sprintf("%d (%.1f%%)", sum(dep), 100 * mean(dep)))
+```
+
+## 4. Regresión logística y Poisson robusta
+
+En EPI-DATA: **Pregunta y modelo** → desenlace Depresión («Sí»), exposición Diabetes, covariables edad, sexo, apoyo, hemoglobina y albúmina.
+
+```{r}
+library(sandwich); library(lmtest)
+cc <- d |> drop_na(dep, diabetes, edad, sexo, apoyo, hb, alb)
+m <- glm(dep ~ diabetes + edad + sexo + apoyo + hb + alb, data = cc, family = binomial)
+round(exp(cbind(OR = coef(m), confint.default(m)))["diabetesSí", ], 2)    # esperado: OR 1,98 (1,02 a 3,87)
+p <- glm(dep ~ diabetes + edad + sexo + apoyo + hb + alb, data = cc, family = poisson)
+ct <- coeftest(p, vcov. = vcovHC(p, type = "HC0"))["diabetesSí", ]
+round(c(RP = exp(ct[[1]]), p = ct[[4]]), 3)                              # esperado: RP 1,43; p = 0,076
+```
+
+## 5. Supervivencia
+
+En EPI-DATA: ejemplo «Hemodiálisis · mortalidad» → Supervivencia.
+
+```{r}
+library(survival)
+m2 <- read.csv("hemodialisis_mortalidad.csv", check.names = FALSE, na.strings = c("", "NA"))
+names(m2) <- c("id", "acceso", "edad", "sexo", "diabetes", "charlson", "alb", "hb", "tiempo", "fallecido")
+m2 <- m2 |> mutate(evento = as.integer(fallecido == "Sí"),
+                   acceso = relevel(factor(acceso), ref = "Fístula arteriovenosa")) |> drop_na(alb)
+cx <- coxph(Surv(tiempo, evento) ~ acceso + edad + sexo + diabetes + charlson + alb, data = m2)
+round(exp(cbind(HR = coef(cx), confint(cx)))[1, ], 2)                    # esperado: HR 2,23 (1,62 a 3,07)
+```
+
+```{r}
+#| label: fig-km
+#| fig-cap: "Supervivencia según acceso vascular (Kaplan-Meier)"
+plot(survfit(Surv(tiempo, evento) ~ acceso, data = m2), col = c("#2E79C7", "#C9801A"), lwd = 2,
+     xlab = "Meses", ylab = "Supervivencia")
+legend("bottomleft", c("Fístula", "Catéter"), col = c("#2E79C7", "#C9801A"), lwd = 2, bty = "n")
+```
+
+## Sesión
+
+```{r}
+sessionInfo()
+```

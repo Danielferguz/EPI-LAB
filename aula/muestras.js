@@ -45,5 +45,6 @@ window.EPI_MUESTRAS = {
  "c43": "aula/index.html#c43",
  "c44": "aula/index.html#c44",
  "c45": "aula/index.html#c45",
- "c46": "aula/index.html#c46"
+ "c46": "aula/index.html#c46",
+ "c47": "aula/index.html#c47"
 };

@@ -1452,7 +1452,7 @@ window.EPI_COURSE_DETAILS = Object.assign(window.EPI_COURSE_DETAILS || {}, {
  "c14": {
   "format": "A tu ritmo · aula virtual",
   "language": "Español",
-  "summary": "Importar, limpiar, visualizar y analizar datos con R y RStudio.",
+  "summary": "R, RStudio y Quarto paso a paso: importar, limpiar, describir, graficar, comparar, modelar y reportar con los mismos ejemplos de EPI-DATA y con salidas reales.",
   "audience": [
    "Investigadores y clínicos que analizan sus propias bases de datos"
   ],
@@ -1460,22 +1460,28 @@ window.EPI_COURSE_DETAILS = Object.assign(window.EPI_COURSE_DETAILS || {}, {
    "Un computador o tablet con navegador actualizado; no se instala nada"
   ],
   "outcomes": [
-   "Instalar el entorno, organizar un proyecto e importar un archivo.",
-   "Transformar variables, contar categorías y construir una Tabla 1.",
-   "Hacer gráficos, ajustar una regresión logística y leer el OR."
+   "Instalar R y RStudio, escribir tus primeras líneas y entender qué función de R hace lo que ya haces con los botones de EPI-DATA.",
+   "Importar un CSV, ordenar los nombres, mirar tipos de variable y cuantificar los datos perdidos y los casos completos.",
+   "Crear variables, definir categorías de referencia, filtrar casos completos y resumir por grupos con los verbos de dplyr.",
+   "Construir una Tabla 1 por grupos con media (DE) y n (%) y acompañarla de histogramas y diagramas de cajas.",
+   "Construir gráficos por capas, personalizar colores y etiquetas y exportar figuras con la calidad que piden las revistas.",
+   "Ejecutar e interpretar en R las pruebas de hipótesis del curso de estadística y reportar sus resultados.",
+   "Estimar OR y RP crudos y ajustados, dibujar un forest plot, revisar supuestos básicos y reportar como piden las revistas.",
+   "Estimar curvas de supervivencia, compararlas con el log-rank y ajustar un modelo de Cox, comprobando los riesgos proporcionales.",
+   "Unir código, tablas, gráficos y texto en un informe reproducible, y redactar métodos y resultados según las guías de reporte."
   ],
   "includes": [
-   "3 unidades interactivas (31 diapositivas animadas)",
+   "9 unidades interactivas (157 diapositivas animadas)",
    "Lectura con fórmulas y ejemplos en cada unidad",
-   "3 prácticas con respuesta y 12 preguntas de cuestionario",
-   "Con plantillas para copiar"
+   "18 prácticas con respuesta y 36 preguntas de cuestionario",
+   "Con plantillas para copiar, listas de verificación"
   ],
   "modules": [
    {
-    "t": "Unidad 1 · R, RStudio y tus primeros datos",
+    "t": "Unidad 1 · Tu primer análisis: R, RStudio y el mapa de EPI-DATA a R",
     "items": [
      {
-      "t": "R, RStudio y tus primeros datos",
+      "t": "Tu primer análisis: R, RStudio y el mapa de EPI-DATA a R",
       "k": "diapositivas",
       "m": 45
      },
@@ -1484,7 +1490,7 @@ window.EPI_COURSE_DETAILS = Object.assign(window.EPI_COURSE_DETAILS || {}, {
       "k": "lectura"
      },
      {
-      "t": "1 práctica(s) con respuesta",
+      "t": "2 práctica(s) con respuesta",
       "k": "practica"
      },
      {
@@ -1494,10 +1500,10 @@ window.EPI_COURSE_DETAILS = Object.assign(window.EPI_COURSE_DETAILS || {}, {
     ]
    },
    {
-    "t": "Unidad 2 · Limpiar y describir con dplyr y gtsummary",
+    "t": "Unidad 2 · Importar y revisar la base como en EPI-DATA",
     "items": [
      {
-      "t": "Limpiar y describir con dplyr y gtsummary",
+      "t": "Importar y revisar la base como en EPI-DATA",
       "k": "diapositivas",
       "m": 45
      },
@@ -1506,7 +1512,7 @@ window.EPI_COURSE_DETAILS = Object.assign(window.EPI_COURSE_DETAILS || {}, {
       "k": "lectura"
      },
      {
-      "t": "1 práctica(s) con respuesta",
+      "t": "2 práctica(s) con respuesta",
       "k": "practica"
      },
      {
@@ -1516,10 +1522,76 @@ window.EPI_COURSE_DETAILS = Object.assign(window.EPI_COURSE_DETAILS || {}, {
     ]
    },
    {
-    "t": "Unidad 3 · Gráficos con ggplot2 y tu primer modelo",
+    "t": "Unidad 3 · Limpiar y transformar con dplyr",
     "items": [
      {
-      "t": "Gráficos con ggplot2 y tu primer modelo",
+      "t": "Limpiar y transformar con dplyr",
+      "k": "diapositivas",
+      "m": 45
+     },
+     {
+      "t": "Lectura de la unidad",
+      "k": "lectura"
+     },
+     {
+      "t": "2 práctica(s) con respuesta",
+      "k": "practica"
+     },
+     {
+      "t": "Cuestionario de 4 preguntas",
+      "k": "quiz"
+     }
+    ]
+   },
+   {
+    "t": "Unidad 4 · Describir: Tabla 1 y gráficos de distribución",
+    "items": [
+     {
+      "t": "Describir: Tabla 1 y gráficos de distribución",
+      "k": "diapositivas",
+      "m": 45
+     },
+     {
+      "t": "Lectura de la unidad",
+      "k": "lectura"
+     },
+     {
+      "t": "2 práctica(s) con respuesta",
+      "k": "practica"
+     },
+     {
+      "t": "Cuestionario de 4 preguntas",
+      "k": "quiz"
+     }
+    ]
+   },
+   {
+    "t": "Unidad 5 · Gráficos listos para publicar con ggplot2",
+    "items": [
+     {
+      "t": "Gráficos listos para publicar con ggplot2",
+      "k": "diapositivas",
+      "m": 45
+     },
+     {
+      "t": "Lectura de la unidad",
+      "k": "lectura"
+     },
+     {
+      "t": "2 práctica(s) con respuesta",
+      "k": "practica"
+     },
+     {
+      "t": "Cuestionario de 4 preguntas",
+      "k": "quiz"
+     }
+    ]
+   },
+   {
+    "t": "Unidad 6 · Comparar grupos: t, χ², rangos, ANOVA y correlación en R",
+    "items": [
+     {
+      "t": "Comparar grupos: t, χ², rangos, ANOVA y correlación en R",
       "k": "diapositivas",
       "m": 50
      },
@@ -1528,7 +1600,73 @@ window.EPI_COURSE_DETAILS = Object.assign(window.EPI_COURSE_DETAILS || {}, {
       "k": "lectura"
      },
      {
-      "t": "1 práctica(s) con respuesta",
+      "t": "2 práctica(s) con respuesta",
+      "k": "practica"
+     },
+     {
+      "t": "Cuestionario de 4 preguntas",
+      "k": "quiz"
+     }
+    ]
+   },
+   {
+    "t": "Unidad 7 · Regresión en R: logística, Poisson robusta y lineal",
+    "items": [
+     {
+      "t": "Regresión en R: logística, Poisson robusta y lineal",
+      "k": "diapositivas",
+      "m": 55
+     },
+     {
+      "t": "Lectura de la unidad",
+      "k": "lectura"
+     },
+     {
+      "t": "2 práctica(s) con respuesta",
+      "k": "practica"
+     },
+     {
+      "t": "Cuestionario de 4 preguntas",
+      "k": "quiz"
+     }
+    ]
+   },
+   {
+    "t": "Unidad 8 · Supervivencia en R: Kaplan-Meier, log-rank y Cox",
+    "items": [
+     {
+      "t": "Supervivencia en R: Kaplan-Meier, log-rank y Cox",
+      "k": "diapositivas",
+      "m": 50
+     },
+     {
+      "t": "Lectura de la unidad",
+      "k": "lectura"
+     },
+     {
+      "t": "2 práctica(s) con respuesta",
+      "k": "practica"
+     },
+     {
+      "t": "Cuestionario de 4 preguntas",
+      "k": "quiz"
+     }
+    ]
+   },
+   {
+    "t": "Unidad 9 · Reporte reproducible con Quarto y cómo lo piden las revistas",
+    "items": [
+     {
+      "t": "Reporte reproducible con Quarto y cómo lo piden las revistas",
+      "k": "diapositivas",
+      "m": 50
+     },
+     {
+      "t": "Lectura de la unidad",
+      "k": "lectura"
+     },
+     {
+      "t": "2 práctica(s) con respuesta",
       "k": "practica"
      },
      {
@@ -4678,5 +4816,106 @@ window.EPI_COURSE_DETAILS = Object.assign(window.EPI_COURSE_DETAILS || {}, {
     "Sí: por ahora todas las unidades están abiertas y gratuitas en el aula abierta de EPI-LAB."
    ]
   ]
+ },
+ "c47": {
+  "format": "A tu ritmo · aula virtual",
+  "language": "Español",
+  "summary": "Talleres paso a paso con capturas: qué pulsar en cada herramienta, qué ocurre, cómo interpretar la salida y cómo piden las revistas reportarla.",
+  "audience": [
+   "Investigadores y clínicos que analizan sus propias bases de datos"
+  ],
+  "prereq": [
+   "Un computador o tablet con navegador actualizado; no se instala nada"
+  ],
+  "outcomes": [
+   "Cargar una base, revisar las variables, construir la Tabla 1 y evaluar los datos perdidos en EPI-DATA, con la interpretación y el reporte que piden las revistas.",
+   "Configurar, ejecutar e interpretar una regresión logística y una de Poisson con varianza robusta en EPI-DATA, y reportarlas como lo piden las revistas.",
+   "Estimar curvas de Kaplan-Meier, comparar grupos y ajustar un modelo de Cox en EPI-DATA, interpretando el HR y reportando el análisis."
+  ],
+  "includes": [
+   "3 unidades interactivas (59 diapositivas animadas)",
+   "Lectura con fórmulas y ejemplos en cada unidad",
+   "6 prácticas con respuesta y 12 preguntas de cuestionario",
+   "Con listas de verificación"
+  ],
+  "modules": [
+   {
+    "t": "Taller 1 · EPI-DATA: de la base de datos al descriptivo",
+    "items": [
+     {
+      "t": "EPI-DATA: de la base de datos al descriptivo",
+      "k": "diapositivas",
+      "m": 50
+     },
+     {
+      "t": "Lectura de la unidad",
+      "k": "lectura"
+     },
+     {
+      "t": "2 práctica(s) con respuesta",
+      "k": "practica"
+     },
+     {
+      "t": "Cuestionario de 4 preguntas",
+      "k": "quiz"
+     }
+    ]
+   },
+   {
+    "t": "Taller 2 · EPI-DATA: regresión logística y Poisson robusta",
+    "items": [
+     {
+      "t": "EPI-DATA: regresión logística y Poisson robusta",
+      "k": "diapositivas",
+      "m": 55
+     },
+     {
+      "t": "Lectura de la unidad",
+      "k": "lectura"
+     },
+     {
+      "t": "2 práctica(s) con respuesta",
+      "k": "practica"
+     },
+     {
+      "t": "Cuestionario de 4 preguntas",
+      "k": "quiz"
+     }
+    ]
+   },
+   {
+    "t": "Taller 3 · EPI-DATA: supervivencia con Kaplan-Meier y Cox",
+    "items": [
+     {
+      "t": "EPI-DATA: supervivencia con Kaplan-Meier y Cox",
+      "k": "diapositivas",
+      "m": 50
+     },
+     {
+      "t": "Lectura de la unidad",
+      "k": "lectura"
+     },
+     {
+      "t": "2 práctica(s) con respuesta",
+      "k": "practica"
+     },
+     {
+      "t": "Cuestionario de 4 preguntas",
+      "k": "quiz"
+     }
+    ]
+   }
+  ],
+  "faq": [
+   [
+    "¿Necesito instalar algo?",
+    "No. Las unidades se abren en el navegador."
+   ],
+   [
+    "¿Puedo probarlo antes?",
+    "Sí: por ahora todas las unidades están abiertas y gratuitas en el aula abierta de EPI-LAB."
+   ]
+  ],
+  "tool": "epi-data"
  }
 });
